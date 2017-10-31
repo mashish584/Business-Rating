@@ -1,0 +1,23 @@
+mixin homeNav() 
+      li.navbar_item
+        a.navbar_item--link(href='')
+          b.fa.fa-plus
+          | Company
+      li.navbar_item
+        a.navbar_item--link(href='')
+          b.fa.fa-line-chart
+          | Leaderboard
+      li.navbar_item.dropdown
+        span
+          img(src='http://www.dosomethingnew.com/assets/files/Profile-Placeholder.png', alt='')
+          i.fa.fa-angle-down
+        .dropdown-menu
+          a(href='')
+            i.fa.fa-user-o
+            | Your Profile
+          a(href='')
+            i.fa.fa-gear
+            | Settings
+          a(href='')
+            i.fa.fa-sign-out
+            | Log Out

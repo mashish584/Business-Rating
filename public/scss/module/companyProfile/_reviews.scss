@@ -1,0 +1,28 @@
+&--reviews{
+    li{
+        @include flexy();
+        margin-bottom: em(30px);
+        width:80%;
+        @extend %center;
+        padding:em(15px);
+        border:1px solid darken($primary--bg,10%);
+        img{
+            @include imageSize(150px,150px);
+            margin-right: em(30px);
+            align-self: center;
+        }
+        .review{
+            flex:2;
+            .rating{
+                @include flexy();
+            }
+            a{
+                display: block;
+                h3{
+                    font-size: em(18px);
+                    margin-bottom: em(18px,30px);
+                }
+            }
+        }
+    }
+}

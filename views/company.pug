@@ -1,0 +1,122 @@
+extend layout
+
+block content
+    #content-wrapper
+      +navigation()
+      .company_profile
+        .company_profile--header
+          img.item(src='https://unsplash.it/500/500', alt='')
+          .company-info.item
+            h2 Cras ornare tristique elit.
+            hr
+            .stars
+              a.anchor-button(href='') Write a Review
+              i.star-on
+              i.star-on
+              i.star-on
+              i.star-on
+              i.star-on
+              span (5+)
+            .about
+              | Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.
+              | Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.
+            .social-media-links
+              a.fa.fa-facebook(href='')
+              a.fa.fa-google(href='')
+              a.fa.fa-globe(href='')
+            a.normal-btn(href='') Register me as a Employee
+        .company_profile--basic
+          span
+            i.fa.fa-map-marker
+            | New Delhi,India
+          span
+            i.fa.fa-phone
+            | +91-8542265845
+          .stars
+            span Your Rating : 
+            i.star-on
+            i.star-on
+            i.star-on
+            i.star-on
+            i.star-on
+        h2.headline Employees
+        .company_profile--employees
+          a(href='')
+            img(src='https://unsplash.it/500/500', alt='')
+            .about
+              span Ashish Mehra
+          a(href='')
+            img(src='https://unsplash.it/500/500', alt='')
+            .about
+              span Ashish Mehra
+          a(href='')
+            img(src='https://unsplash.it/500/500', alt='')
+            .about
+              span Ashish Mehra
+          a(href='')
+            img(src='https://unsplash.it/500/500', alt='')
+            .about
+              span Ashish Mehra
+          a(href='')
+            img(src='https://unsplash.it/500/500', alt='')
+            .about
+              span Ashish Mehra
+          a(href='')
+            img(src='https://unsplash.it/500/500', alt='')
+            .about
+              span Ashish Mehra
+          a(href='')
+            img(src='https://unsplash.it/500/500', alt='')
+            .about
+              span Ashish Mehra
+          a(href='')
+            img(src='https://unsplash.it/500/500', alt='')
+            .about
+              span Ashish Mehra
+          a(href='')
+            img(src='https://unsplash.it/500/500', alt='')
+            .about
+              span Ashish Mehra
+        h2.headline Reviews
+        .company_profile--reviews
+          li
+            img(src='https://unsplash.it/500/500', alt='')
+            .review
+              a(href='')
+                h3 Adam Saleh
+              .stars
+                i.star-on
+                i.star-on
+                i.star-on
+                i.star-on
+                i.star-on
+              p
+                | Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.
+          li
+            img(src='https://unsplash.it/500/500', alt='')
+            .review
+              a(href='')
+                h3 Adam Saleh
+              .stars
+                i.star-on
+                i.star-on
+                i.star-on
+                i.star-on
+                i.star-on
+              p
+                | Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.
+          li
+            img(src='https://unsplash.it/500/500', alt='')
+            .review
+              a(href='')
+                h3 Adam Saleh
+              .stars
+                i.star-on
+                i.star-on
+                i.star-on
+                i.star-on
+                i.star-on
+              p
+                | Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.
+block footer
+    footer(style='background:#fff;') © Business Rating App

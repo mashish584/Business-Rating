@@ -1,0 +1,70 @@
+
+
+// rating stars
+
+.star-on{
+    background: url(#{$path--img}/star-on.png) no-repeat center;
+    background-size: 100%;
+}
+
+//margin-top
+
+.margin-top{
+    margin-top: em(50px);
+}
+
+// Pseudos
+
+%pseudos{
+    position: absolute;
+    content: "";
+    display: block;
+}
+
+// Above priority
+
+%above{
+    position: relative;
+    z-index: 99;
+}
+
+// Image circle
+
+%circle{
+    border-radius: 50%;
+}
+
+//center
+%center{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+// paragraph
+
+%paraStyle{
+    font-family: $font-family--five;
+    font-weight: $font-weight--light;
+    font-size: em(18px);
+    letter-spacing: $spacing;
+    line-height: em(24px,18px);
+    text-align: justify;
+}
+
+// help text
+
+.help-text{
+    margin-top:em(20px);
+    letter-spacing: 0;
+    font-size: em(14px);
+    text-transform: none;
+    color: darken($primary--bg,30%);
+    font-weight: $font-weight--light;
+    line-height: em(16px,14px);
+}
+
+// active
+
+li.active{
+    border-bottom: 5px solid lighten($CornflowerBlue,10%);
+}

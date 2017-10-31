@@ -1,0 +1,14 @@
+.stars{
+    @include flexy();
+    @extend %above;
+    i{
+        width: 12px;
+        height: 12px;
+        margin: em(10px) em(3px);       
+    }
+    span{
+        align-self: center;
+        margin-left: auto;
+        font-weight: $font-weight--thin;
+    }
+}

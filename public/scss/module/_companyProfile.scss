@@ -1,0 +1,23 @@
+
+.company_profile{
+    background: lighten($primary--bg,10%);
+    border-top: 1px solid $primary--bg;
+    perspective: 700px;
+    padding-bottom: 50px;
+    width: 100%;
+    @extend %center;
+    @extend %paraStyle;
+    overflow: hidden;
+    // company--header
+    @import "companyProfile/header";
+
+    //company-profile employees gallery
+    @import "companyProfile/employees";
+
+    //comapny profile basic
+    @import "companyProfile/basic";
+
+    // company profile reviews
+     @import "companyProfile/reviews";
+
+}

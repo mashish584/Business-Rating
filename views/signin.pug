@@ -1,0 +1,24 @@
+extend layout
+
+block content
+    #form-wrapper
+      +navigation(false,true)    
+      form(action='')
+        h2 Sign In
+        hr
+        input#email.form-input(type='email', placeholder='example@abc.com')
+        input#password.form-input(type='password', name='password', placeholder='Password')
+        p
+          input#remember(type='checkbox')
+          |  Remember Me
+        .form-group
+          button.form-submit(type='submit') Log In
+          a(href='') I forgot my password.
+        hr
+        span
+          | Login with 
+          br
+          a.fa.fa-facebook(href='') acebook
+          |  or 
+          a.fa.fa-google(href='') oogle
+

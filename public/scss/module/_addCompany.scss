@@ -1,0 +1,66 @@
+#add-company,
+#edit-company{
+    margin-bottom: em(30px);
+    box-shadow: 0 2px 0 rgba($secondary--bg,0.3);
+    hr{
+      border-color:rgba($primary--bg,0.2);
+    }
+    input,
+    textarea,
+    select{
+        background: transparent;
+        border: 2px solid darken($primary--bg,10%);
+    }
+    textarea{
+        height: 100px;
+    }
+    input[type="file"]{
+        display: none;
+    }
+    .normal-btn{
+        width:40px;
+        height: 40px;
+        border-radius: 50%;
+        align-self: flex-start;
+        background: $apple;
+        padding: 0;
+    }
+    .input-group{
+        position: relative;
+        width: 100%;
+        position: relative;
+        margin: em(5px) auto;
+        span{
+            position: absolute;
+            width: 120px;
+            background:darken($primary--bg,2%);
+            top: 0;
+            bottom: 0;
+            padding-left: em(15px);
+            padding-top: em(15px);
+        }
+        input{
+            margin: 0;
+            padding-left: 130px;
+        }   
+        label{
+            display: block; 
+            margin: em(7px) 0;
+        }
+    }
+    .upload-group{
+        @include flexy();   
+    }
+    .progress-bar{
+        padding:em(5px);
+        background:darken($primary--bg,10%);
+        flex: 1;
+        align-self: center;
+        margin-left: em(10px);
+        border-radius: em(50px);
+        text-align: center;
+    }
+    .form-submit{
+        margin-top: em(25px);
+    }
+}

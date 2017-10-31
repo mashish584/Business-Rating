@@ -1,0 +1,9 @@
+
+
+// container exend
+%container{
+    @include flexy(column);
+    width: $container--width;       
+    position: relative;
+    transition:300ms ease-in-out;
+}

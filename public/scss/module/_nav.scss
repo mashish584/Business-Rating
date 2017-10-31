@@ -1,0 +1,59 @@
+
+.navbar{
+    @include flexy(){
+        max-height: 65px;
+        padding: em(15px);
+        background:lighten($primary--bg,10%);
+        justify-content: space-between;
+        box-shadow: 0 1px 0 rgba(0,0,0,0.2);
+    };
+
+    &_items{
+        @include flexy();
+    }
+    
+    &_item{
+        color: lighten($CornflowerBlue,5%);
+        font-weight: $font-weight--light;
+        margin:auto em(10px);
+
+        &--link{
+            color: lighten($secondary--bg,10%);
+            font-weight: $font-weight--thin;
+            b{
+                margin-right: em(7px);
+            }
+        }
+        >span{
+            @include flexy();
+            img{
+               @include imageSize(30px,30px);
+               @extend %circle;
+            }
+            i{
+               align-self: center;
+               font-weight: $font-weight--bold;
+               font-size: em(18px);
+               margin-left: em(5px);
+            }
+        }
+    }
+
+    &-logo{
+        color:$secondary--bg;
+        font-size: em(13px);
+        letter-spacing: em($spacing);
+        font-family: $font-family--five;
+        text-transform: uppercase;
+        align-self: center;
+    }
+
+    &-btn{
+        @include flexy(){
+            display: none;
+            button{
+              background: none;
+            }
+        }
+    }
+}

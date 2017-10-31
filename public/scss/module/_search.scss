@@ -1,0 +1,18 @@
+
+.search{
+   position: relative;
+   max-height: em(50px);
+   flex-basis: 400px;
+   input{
+       border:1px solid $primary--bg;
+       border-radius: em(20px);
+       background:none;
+       padding-left: em(25px);
+   }
+   button{
+       @extend %btnBG;
+       position: absolute;
+       top: 20%;
+       right: 3%;
+   }
+}

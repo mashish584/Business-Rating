@@ -1,0 +1,24 @@
+extend layout
+
+block content
+    #form-wrapper
+      +navigation(false)
+      form(action='/register' method="POST")
+        h2 Sign Up
+        hr
+        if error
+        div.flash #{error}
+        input#name.form-input(type='text' name="username" placeholder='Enter your fullname')
+        input#email.form-input(type='email' name="email" placeholder='example@abc.com')
+        input#password.form-input(type='password' name='password', placeholder='Password')
+        input#password.form-input(type='password' name='confirm', placeholder='Confirm password')
+        .form-group
+        button.form-submit(type='submit') Sign Up
+        hr
+        span
+          | Login with 
+          br
+          a.fa.fa-facebook(href='') acebook
+          |  or 
+          a.fa.fa-google(href='') oogle
+

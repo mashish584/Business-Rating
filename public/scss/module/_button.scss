@@ -1,0 +1,14 @@
+
+.form-submit,
+.normal-btn{
+    @extend %btn;
+    background: $input--submit;
+    width: 100px;
+    align-self: flex-end;
+    box-shadow: 0 4px 18px rgba($secondary--bg,0.4);
+    + a{
+        color:$pomegranate;
+        text-decoration: inherit;
+    }
+}
+

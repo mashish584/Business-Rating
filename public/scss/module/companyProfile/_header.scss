@@ -1,0 +1,96 @@
+&--header{
+    @include flexy();
+    position: relative;
+    transform-style: preserve-3d;
+    padding:em(70px) em(30px);
+    margin-bottom: em(75px);
+    .item{
+        flex: 1;
+        &:last-child{
+            flex:2;
+            padding: 0 em(30px);
+        }
+    }
+    img{
+        @extend %above;
+        @include imageSize(300px,300px);
+        box-shadow: 0 2px 15px rgba($secondary--bg,0.2);
+    }
+    &:after{
+        @extend %pseudos;
+        width: 500px;
+        height: 100%;
+        background: rgba($primary--bg,0.9);
+        border-top-left-radius: 20%;
+        right: -12%;
+        top: 0;
+        transform: skewX(-25deg);
+    }
+}
+
+
+ // comapany header - info
+ .company-info{
+    @extend %above;
+    h2{
+        font-size: em(35px);
+        font-weight: $font-weight--thin;
+        color: $secondary--bg;
+        font-family: $font-family--four;
+        text-align: left;
+    }
+    hr{
+        border-color: rgba($primary--bg, 0.1);
+    }
+    .stars,
+    .about,
+    .social-media-links{
+        padding: em(10px) em(15px);
+    }
+    .stars{
+        justify-content: flex-end;
+        a{
+            color: darken($CornflowerBlue,10%);
+            text-decoration: underline;
+            margin-right: auto;
+            align-self: center;
+            font-weight: $font-weight--medium;
+        }
+        i{
+            width: 20px;
+            height: 20px;
+            margin: em(5px);
+        }
+        span{
+            margin-left: 10px;
+            align-self: flex-end;
+            font-weight: $font-weight--bold;
+        }
+    }
+    .about{
+       margin-top: em(25px);
+       color: $secondary--bg;
+    }
+    .social-media-links{
+        margin-bottom: em(10px);
+        a{
+            margin: em(5px) em(10px);
+            color:rgba($secondary--bg,0.6);
+            transition: 100ms ease-in-out;
+            &:first-child{
+                margin-left: 0;
+            }
+            &:hover{
+                color:rgba($secondary--bg,1);
+            }
+        }
+    }
+
+    // normal button
+    .normal-btn{
+        width: auto;
+        padding: em(10px) em(15px);
+        float: right;
+    }
+
+}

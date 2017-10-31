@@ -1,0 +1,14 @@
+%btn{
+    color: lighten($primary--bg,10%);
+    border-radius: em(3px);
+    margin-top:em(10px);
+}
+
+%btnBG{
+    background: none;
+    width: em(30px);
+    height: em(30px);
+    padding: 0;
+    margin: 0;
+}
+

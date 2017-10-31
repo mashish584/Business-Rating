@@ -1,0 +1,75 @@
+
+.business-cards{
+    @include flexy();
+}
+
+.card{
+    flex-basis: flex-width(4,$flex-item--marginX);
+    margin: em(15px) $flex-item--marginX;
+    height: em(450px);
+    padding-bottom: em(10px);
+    background: lighten($primary--bg,10%);
+    box-shadow: 0 2px 0 rgba($secondary--bg, 0.2);
+    overflow: hidden;  
+}
+
+.card-image{
+    height: 60%;
+    position: relative;
+    &:after{
+        @extend %pseudos;
+        width: 100%;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        background:rgba(darken($CornflowerBlue, 10%),0.5);
+    }
+}
+
+.card-content{
+    position: relative;
+    padding: em(13px) em(10px);  
+    h2{
+        font-family: $font-family--three;
+        font-weight: $font-weight--medium;
+        color: $secondary--bg;
+        @extend %above;
+    } 
+    &:after{
+        @extend %pseudos;
+        height: em(80px);
+        top: em(-40px);
+        left: 0;
+        background: lighten($primary--bg,10%);
+        transform: skewY(-8deg);
+        width: 101%;
+    }
+    hr{
+        border-color: rgba($primary--bg,0.2);
+    }
+    span{
+        i{
+            color:darken($pomegranate,5%);
+            margin-right: em(5px);
+        }
+    }
+}
+
+.card-action{
+    padding: em(13px) em(10px);  
+    @include flexy(){
+        justify-content: center;
+    }
+    a{
+        i{
+            margin-left: em(5px);
+            transform:translateY(1px);
+        }
+    }
+
+}
+
+
+
+
+

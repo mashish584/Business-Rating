@@ -1,0 +1,36 @@
+&--employees{
+    @include flexy();
+    padding: 0 em(10px);
+    a{
+        @include flexy();
+        background: $primary--bg;
+        padding: em(15px);
+        flex-basis: flex-width(3,$flex-item--marginX);
+        margin: em(10px) $flex-item--marginX;  
+        box-shadow: 0 1px 5px rgba($secondary--bg,0.4);  
+        transition:300ms ease-in;
+        img{
+            @include imageSize(75px,75px); 
+            @extend %circle;  
+            align-self: center;
+            margin-right: em(10px);     
+        }
+        .about{
+            flex:2;
+            @include flexy(){
+                justify-content: center;
+                align-items: center;
+            }
+            span{
+                font-weight: $font-weight--light;
+                font-weight: $font-weight--bold;
+                letter-spacing: $spacing;
+                font-size: em(16px);
+                text-align: center;
+            }
+        }
+        &:hover{
+            background: lighten($primary--bg,10%);
+        }
+    }
+}

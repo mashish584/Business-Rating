@@ -1,0 +1,31 @@
+
+@mixin circle{
+    border-radius: 50%;
+}
+
+@mixin flexy($direction:row){
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction:$direction;
+    @content;
+}
+
+@mixin imageSize($width,$height){
+    height: $height;
+    width: $width;
+}
+
+@mixin media($width,$type,$min:false){
+        @if($min){
+            @media(min-width:$min) and (#{$type}:$width){
+                @content;
+            } 
+        }@else{
+            @media(#{$type}:$width){
+                @content;
+            }
+        }
+}
+
+
+

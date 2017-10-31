@@ -1,0 +1,27 @@
+
+
+// hide element
+.hide{
+    display: none;
+}
+
+//hidden overflow from window elements
+.overflow{
+    overflow:hidden;
+}
+
+//side navigation
+.open-nav{
+	transform:translateX(50%);
+}
+
+// show side navigation
+.visible{
+	opacity:1;
+}
+
+//dropdown navigation
+.show-dropdown{
+	opacity:1;
+	transform:translateX(-60%) translateY(0);
+}

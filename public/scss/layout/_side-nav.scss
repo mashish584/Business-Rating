@@ -1,0 +1,16 @@
+.side-menu{
+    position: fixed;
+    width: 50%;
+    height: 100vh;
+    background: #222;
+    padding-top: em(80px);
+    opacity:0;
+    li{
+      padding: em(15px);
+      a{
+          color: lighten($primary--bg,10%);
+          font-size: em(16px);
+          font-weight: $font-weight--thin;
+      }
+    }
+}

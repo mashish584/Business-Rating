@@ -1,0 +1,78 @@
+extend layout
+
+block content
+  #content-wrapper
+    nav.navbar
+      .navbar-btn
+        button.fa.fa-bars(data-id='open')
+        button.fa.fa-times.hide(data-id='close')
+      a.navbar-logo(href='') Business Rating 
+      ul.navbar_items
+        li.navbar_item
+          a.navbar_item--link(href='')
+            b.fa.fa-plus
+            | Company
+        li.navbar_item
+          a.navbar_item--link(href='')
+            b.fa.fa-line-chart
+            | Leaderboard
+        li.navbar_item.dropdown
+          span
+            img(src='http://www.dosomethingnew.com/assets/files/Profile-Placeholder.png', alt='')
+            i.fa.fa-angle-down
+          .dropdown-menu
+            a(href='')
+              i.fa.fa-user-o
+              | Your Profile
+            a(href='')
+              i.fa.fa-gear
+              | Settings
+            a(href='')
+              i.fa.fa-sign-out
+              | Log Out
+    .user_profile
+      .user_profile--header
+        img(src='https://unsplash.it/500/500', alt='')
+      .user_profile--section
+        .about
+          h4
+            | Works in 
+            a(href='') Alerto
+          hr
+          |                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+          |                         Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis.
+          |                         Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.
+        .settings
+          ul.menu
+            li.active
+              a(href='' class="settings--switch" data-target="bio") Bio Update
+            li
+              a(href='' class="settings--switch" data-target="password") Password Update
+          form(action=''id='form-one')
+            h2 Bio Update
+            hr
+            .form-group
+              label(for='name') Name
+              input#name(type='text', name='name')
+            .form-group
+              label(for='Introduction') Introduction
+              textarea(name='about')
+            button.form-submit(type='submit') Save
+          form(action=''id='form-two')
+            h2 Password Update
+            hr
+            .form-group
+              label(for='old') Old Password
+              input#old(type='password', name='oldPassword')
+            .form-group
+              label(for='new') New Password
+              input#new(type='password', name='newPassword')
+            .form-group
+              label(for='confirm') Confirm Password
+              input#confirm(type='password', name='confirmPassword')
+            button.form-submit(type='submit') Update
+
+block footer
+  footer(style='background:#fff') © Business Rating App
+
+

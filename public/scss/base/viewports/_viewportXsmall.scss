@@ -1,0 +1,78 @@
+@include media($viewport--xs,max-width){
+    
+    // helpers
+    .bg-change{
+        background: #fff;
+    }
+
+    //navbar-btn
+    .navbar-btn{
+        margin-right: 3%;
+    }
+
+    //card module
+    .business-cards{
+        .card{
+            flex-basis: flex-width(1,$flex-item--marginX);
+        }
+    }
+
+    //companies wrapper
+    .companies{
+        margin:em(30px);
+    }
+
+    // pagination module
+    .pagination{
+        justify-content: flex-start;
+        a{
+            &:first-child{
+                margin-right: 0;                
+            }
+            &:last-child{
+                margin-left: 0;
+            }
+        }
+    }
+
+    //section module
+    .section-heading{
+        flex-direction: column;
+        max-height: inherit;
+        .search{
+            margin-top: em(7px);
+        }
+    }
+    
+    // addCompanyForm
+    #add-company,
+    #edit-company{  
+        width: 100%;
+        margin: 0;  
+    }
+
+    // company profile
+    .company_profile{
+        li{
+            padding:em(30px) em(10px);
+            flex-direction: column;
+            img{
+                margin-bottom: em(17px);
+                margin-right: 0;
+                border-radius: 50%;
+            }
+            .review{
+                text-align: center;
+                .stars{
+                    justify-content: center;
+                }
+                p{
+                    font-family: $font-family--three;
+                    font-weight: $font-weight--medium;
+                    color:darken($primary--bg,55%);
+                }
+            }
+        }
+    }
+    
+}
