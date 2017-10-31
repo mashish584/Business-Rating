@@ -69,7 +69,7 @@ app.use((req, res, next) => {
     res.locals.h = helper;
     res.locals.error = req.flash('error');
     res.locals.success = req.flash('success');
-    res.locals.user = req.user || "";
+    res.locals.user = req.user || null;
     //call next peice of middleware
     next();
 });

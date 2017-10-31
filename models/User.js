@@ -15,6 +15,14 @@ const userSchema = new Schema({
       unique:true,
       trim:true
   },
+  fb_id:{
+      type:String,
+      unique:true
+  },
+  fb_token:{
+      type:String,
+      unique:true
+  },
   createdAt :{
       type:Date,
       default:Date.now()
