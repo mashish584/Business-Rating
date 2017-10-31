@@ -12,6 +12,7 @@ router.get('/',accountController.login);
 router.get('/register',accountController.register);
 
 // Declaring all of our post routes
+router.post('/login',accountController.signin);
 router.post('/register',accountController.validateRegister,catchErrors(accountController.signup),accountController.signin);
 
 module.exports = router;
