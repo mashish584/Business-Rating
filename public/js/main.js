@@ -2,7 +2,7 @@
 //code block to avoid default variables declaration errors
 {
   //javascript in 'strict' mode
-  'use-strict'; 
+  'use strict'; 
 
    //functions to get element or elements
 
@@ -38,7 +38,8 @@
          dropdown      =   _el('.dropdown'),
          menuDrop      =   _el('.dropdown-menu'),
          sideNav       =   _el('.side-menu'),
-         switches      =   __el('.settings--switch');
+         switches      =   __el('.settings--switch'),
+         state         =   _el('#state');
 
   let toggleState      =   false;
 
@@ -127,5 +128,24 @@
       }
     });
  }
+
+  if(state){
+    state.addEventListener('change',function(e){
+      e.preventDefault();
+      axios.get('/getCities?state='+e.target.value)
+      .then(function (response) {
+        let cities = response.data.cities;
+        let html = "";
+            html += "<option selected disabled>Select City</option>";
+        cities.forEach(function(city){
+          html += "<option value="+city+">"+city+"</option>";
+        });
+        _el("#cities").innerHTML = html;
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+    });
+  }
 
 }

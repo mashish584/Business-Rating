@@ -5,7 +5,8 @@ exports.home = (req,res)=>{
 };
 
 exports.addCompany = (req,res) => {
-    res.render('add-company',{title:'Add Company'})
+    const states = Object.keys(require('../data/states'));
+    res.render('add-company',{title:'Add Company',states});
 };
 
 exports.getCompany = (req,res) => {

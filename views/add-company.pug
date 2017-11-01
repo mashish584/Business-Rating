@@ -1,6 +1,6 @@
 extend layout
 
-block content
+block content 
     #content-wrapper
       +navigation()
       form#add-company(action='')
@@ -10,15 +10,15 @@ block content
           label(for='name') Company Name
           input#name(type='text')
         .form-group
-          label(for='city') City
-          select(name='city', id='')
-            option(value='') New Delhi
-            option(value='') Mumbai
-        .form-group
           label(for='state') State
-          select(name='state', id='')
-            option(value='') Uttarakhand
-            option(value='')
+          select(name='state', id='state')
+            option(selected disabled) Select State
+            each state in states
+              option(value=state)= state
+        .form-group
+          label(for='city') City
+          select(name='city', id='cities')
+            option(selected disabled) Select City
         .form-group
           label(for='contact') Contact
           input#contact(type='text', placeholder='+91 (10 digits contact number)')

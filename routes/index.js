@@ -44,8 +44,17 @@ router.get('/company/:id',companyController.getCompany);
 // User Controller
 router.get('/profile',userController.getProfile);
 
+// AJAX Handles
+router.get('/getCities',function(req,res){
+    const states = require('../data/states');
+    const value = req.query.state;
+    const cities = states[value];
+    res.json({cities});
+});
+
 // Declaring all of our post routes
 router.post('/login',middleware.validateAuth,accountController.signin);
 router.post('/register',middleware.validateRegister,catchErrors(accountController.signup),accountController.signin);
+
 
 module.exports = router;
