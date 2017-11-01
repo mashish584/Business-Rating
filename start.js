@@ -1,6 +1,7 @@
 
 const mongoose = require('mongoose');
 
+
 //Our node server should be on version 7.6+ because we're using async await feature of ES8 
 const [major,minor] = process.versions.node.split('.').map(parseFloat);
 if(major < 7 || (major === 7 && minor <= 5)){
