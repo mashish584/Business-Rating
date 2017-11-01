@@ -4,6 +4,7 @@ const passport = require('passport');
 
 //importing controller
 const accountController = require('../controllers/AccountController');
+const companyController = require('../controllers/CompanyController');
 
 //importing errorHandler
 const {catchErrors} = require('../handlers/errorHandlers');
@@ -12,11 +13,9 @@ const {catchErrors} = require('../handlers/errorHandlers');
 const middleware = require('../handlers/middleware');
 
 // Declaring all of our get routes 
-router.get('/',accountController.login);
-router.get('/register',accountController.register);
-router.get('/home',(req,res)=>{
-    res.json(req.user);
-});
+router.get('/',middleware.unauthGuard,accountController.login);
+router.get('/register',middleware.unauthGuard,accountController.register);
+router.get('/home',companyController.home);
 
 // API logins 
 router.get('/auth/facebook',passport.authenticate('facebook',{scope:'email'}));
@@ -30,6 +29,7 @@ router.get('/auth/google/callback',passport.authenticate('google',{
     failureRedirect:'/',
     successRedirect:'/home'
 }));
+router.get('/logout',accountController.logout);
 
 // Declaring all of our post routes
 router.post('/login',accountController.signin);

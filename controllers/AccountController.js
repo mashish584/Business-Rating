@@ -13,6 +13,13 @@ exports.register = (req,res) => {
   res.render('signup',{title:"SignUp"});
 };
 
+exports.logout = (req,res) => {
+  console.log("ss");
+  req.logout();
+  req.flash('success','Logout Success.');
+  res.redirect('back');
+}
+
 exports.signin = passport.authenticate('local',{
 	failureRedirect : '/register',
 	failureFlash : 'Faild Login!',

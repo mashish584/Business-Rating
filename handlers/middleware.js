@@ -28,7 +28,7 @@ exports.validateRegister = (req,res,next) => {
 // middleware to allow user to access user 
 //based routes otherwise redirect user to home
 exports.authGuard = (req,res,next) => {
-    if(req.isAuthenticated){
+    if(req.isAuthenticated()){
       next();
       return;
     }
@@ -40,7 +40,7 @@ exports.authGuard = (req,res,next) => {
 //middleware to stop loggedin user from accessing 
 //signIn and signUp routes and redirect them to home
 exports.unauthGuard = (req,res,next) => {
-    if(!req.isAuthenticated){
+    if(!req.isAuthenticated()){
       next();
       return;
     }
