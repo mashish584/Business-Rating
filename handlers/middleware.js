@@ -23,7 +23,23 @@ exports.validateRegister = (req,res,next) => {
         return;
       }
       next();
-  };
+};
+
+//middleware to check empty fields in 
+//login form
+exports.validateAuth = (req,res,next) => {
+  req.checkBody('username','Username or Password are required.').notEmpty();
+  req.checkBody('password','Username or Password are required.').notEmpty();
+   //catch all validation errors
+   const errors = req.validationErrors();
+   if(errors){
+     const message = errors[0].msg;
+     req.flash('error',message);
+     res.redirect('back');
+     return;
+   }
+   next();
+};
 
 // middleware to allow user to access user 
 //based routes otherwise redirect user to home

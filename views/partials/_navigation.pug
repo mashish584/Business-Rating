@@ -1,4 +1,4 @@
-mixin navigation(home=true,signin=false)
+mixin navigation(home=true,signin,signup)
   nav.navbar
           .navbar-btn
             button.fa.fa-bars(data-id='open')
@@ -8,4 +8,4 @@ mixin navigation(home=true,signin=false)
             if home
               +homeNav()
             else
-              +normalNav(signin)
+              +normalNav(signin,signup)

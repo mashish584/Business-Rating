@@ -5,7 +5,6 @@ const passport = require('passport');
 
 
 exports.login = (req,res) => {
-  console.log(req.user);
   res.render('signin',{title:"LogIn"});
 };
 
@@ -13,16 +12,20 @@ exports.register = (req,res) => {
   res.render('signup',{title:"SignUp"});
 };
 
+exports.reset = (req,res) => {
+  res.render('reset',{title:'Reset Password'});
+  //need functionality
+};
+
 exports.logout = (req,res) => {
-  console.log("ss");
   req.logout();
   req.flash('success','Logout Success.');
   res.redirect('back');
 }
 
 exports.signin = passport.authenticate('local',{
-	failureRedirect : '/register',
-	failureFlash : 'Faild Login!',
+	failureRedirect : '/',
+	failureFlash : 'Username and Password combination not matched.',
 	successRedirect: '/home',
 	successFlash : 'Successfully logged in'
 });

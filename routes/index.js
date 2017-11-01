@@ -15,6 +15,7 @@ const middleware = require('../handlers/middleware');
 // Declaring all of our get routes 
 router.get('/',middleware.unauthGuard,accountController.login);
 router.get('/register',middleware.unauthGuard,accountController.register);
+router.get('/reset/:id/:token',middleware.unauthGuard,accountController.reset);
 router.get('/home',companyController.home);
 
 // API logins 
@@ -32,7 +33,7 @@ router.get('/auth/google/callback',passport.authenticate('google',{
 router.get('/logout',accountController.logout);
 
 // Declaring all of our post routes
-router.post('/login',accountController.signin);
+router.post('/login',middleware.validateAuth,accountController.signin);
 router.post('/register',middleware.validateRegister,catchErrors(accountController.signup),accountController.signin);
 
 module.exports = router;

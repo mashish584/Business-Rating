@@ -1,0 +1,13 @@
+extend layout
+
+block content
+    #form-wrapper
+      +navigation(false,false)
+      form(action='/register' method="POST")
+        h2 Reset Password
+        hr
+        input#password.form-input(type='password' name='password', placeholder='New Password')
+        input#password.form-input(type='password' name='confirm', placeholder='Confirm password')
+        .form-group
+        button.form-submit(type='submit') Reset
+
