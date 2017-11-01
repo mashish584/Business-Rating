@@ -661,6 +661,8 @@ footer {
       .user_profile--section .settings form textarea {
         background: transparent;
         border: 1px solid gainsboro; }
+      .user_profile--section .settings form:last-child {
+        display: none; }
     .user_profile--section .settings:after {
       width: 1px;
       background: gainsboro;

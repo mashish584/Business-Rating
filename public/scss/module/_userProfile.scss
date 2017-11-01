@@ -45,6 +45,9 @@
                     background: transparent;
                     border:1px solid darken($primary--bg,10%);
                 }
+                &:last-child{
+                    display:none;
+                }
            }
            &:after{
                @extend %pseudos;

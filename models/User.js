@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 mongoose.promise = global.promise;
 const passportLocalMongoose = require('passport-local-mongoose');
+const md5 = require('md5');
 
 const userSchema = new Schema({
   username:{
@@ -15,26 +16,19 @@ const userSchema = new Schema({
       unique:true,
       trim:true
   },
-  fb_id:{
-      type:String,
-      unique:true
-  },
-  fb_token:{
-      type:String,
-      unique:true
-  },
-  google_id:{
-      type:String,
-      unique:true
-  },
-  google_token:{
-      type:String,
-      unique:true
-  },
+  fb_id:String,
+  fb_token:String,
+  google_id:String,
+  google_token:String,
   createdAt :{
       type:Date,
       default:Date.now()
   }
+});
+
+userSchema.virtual('gravatar').get(function(){
+	const hash = md5(this.email);
+	return `https://gravatar.com/avatar/${hash}?s=200`;
 });
 
 

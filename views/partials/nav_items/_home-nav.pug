@@ -1,6 +1,6 @@
 mixin homeNav() 
       li.navbar_item
-        a.navbar_item--link(href='')
+        a.navbar_item--link(href='/company/add  ')
           b.fa.fa-plus
           | Company
       li.navbar_item
@@ -9,15 +9,20 @@ mixin homeNav()
           | Leaderboard
       li.navbar_item.dropdown
         span
-          img(src='http://www.dosomethingnew.com/assets/files/Profile-Placeholder.png', alt='')
+          if user
+            img(src=user.gravatar alt=user.username)
+          else
+            img(src='http://www.dosomethingnew.com/assets/files/Profile-Placeholder.png', alt='')
           i.fa.fa-angle-down
         .dropdown-menu
-          a(href='')
-            i.fa.fa-user-o
-            | Your Profile
-          a(href='')
-            i.fa.fa-gear
-            | Settings
-          a(href='/logout')
-            i.fa.fa-sign-out
-            | Log Out
+          if user
+            a(href='/profile')
+              i.fa.fa-user-o
+              | Your Profile
+            a(href='/logout')
+              i.fa.fa-sign-out
+              | Log Out
+          else
+            a(href='/')
+              i.fa.fa-user-o
+              | Log In
