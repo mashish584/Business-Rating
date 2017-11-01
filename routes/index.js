@@ -22,6 +22,12 @@ router.get('/auth/facebook/callback',passport.authenticate('facebook',{
     successRedirect: '/home'
 }));
 
+router.get('/auth/google',passport.authenticate('google',{scope:['email']}));
+router.get('/auth/google/callback',passport.authenticate('google',{
+    failureRedirect:'/',
+    successRedirect:'/home'
+}));
+
 // Declaring all of our post routes
 router.post('/login',accountController.signin);
 router.post('/register',accountController.validateRegister,catchErrors(accountController.signup),accountController.signin);

@@ -23,6 +23,14 @@ const userSchema = new Schema({
       type:String,
       unique:true
   },
+  google_id:{
+      type:String,
+      unique:true
+  },
+  google_token:{
+      type:String,
+      unique:true
+  },
   createdAt :{
       type:Date,
       default:Date.now()
