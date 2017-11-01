@@ -8,6 +8,9 @@ const accountController = require('../controllers/AccountController');
 //importing errorHandler
 const {catchErrors} = require('../handlers/errorHandlers');
 
+// importing middleware
+const middleware = require('../handlers/middleware');
+
 // Declaring all of our get routes 
 router.get('/',accountController.login);
 router.get('/register',accountController.register);
@@ -30,6 +33,6 @@ router.get('/auth/google/callback',passport.authenticate('google',{
 
 // Declaring all of our post routes
 router.post('/login',accountController.signin);
-router.post('/register',accountController.validateRegister,catchErrors(accountController.signup),accountController.signin);
+router.post('/register',middleware.validateRegister,catchErrors(accountController.signup),accountController.signin);
 
 module.exports = router;
