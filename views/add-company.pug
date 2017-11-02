@@ -3,12 +3,13 @@ extend layout
 block content 
     #content-wrapper
       +navigation()
-      form#add-company(action='')
+      form#add-company(method="POST" enctype="multipart/form-data")
         h2 Add Your Company
         hr
+        div#flashes
         .form-group
           label(for='name') Company Name
-          input#name(type='text')
+          input#name(type='text' name='name')
         .form-group
           label(for='state') State
           select(name='state', id='state')
@@ -21,27 +22,27 @@ block content
             option(selected disabled) Select City
         .form-group
           label(for='contact') Contact
-          input#contact(type='text', placeholder='+91 (10 digits contact number)')
+          input#contact(type='text', name='contact' placeholder='+91 (10 digits contact number)')
         .form-group
           label(for='about') About
-          textarea(name='about', id='', maxlength='175', placeholder='Short Description about your company')
+          textarea(name='about', maxlength='175', placeholder='Short Description about your company')
         .form-group
           .input-group
             span Facebook
-            input(type='text', name='facebook', placeholder='Your Profile')
+            input(type='text', name='social[facebook]', placeholder='Page Name')
           .input-group
             span Google
-            input(type='text', name='google', placeholder='Your Profile')
+            input(type='text', name='social[google]' placeholder='Page Name')
           .input-group
             label(for='website') Website
-            input(type='text', name='website')
+            input(type='text', name='social[website]' style="padding-left:10px;" placeholder="https://www.example.com")
         hr
         .upload-group
-          input.form-submit(type='file')
-          button.normal-btn
+          label.normal-btn(for='photo')
             i.fa.fa-camera
-          .progress-bar 0% upload
-          span.help-text Upload file should be in jpg format and size should not exceed 500kb.
+          input.form-submit(type='file' name='photo' id='photo')
+          //- .progress-bar 0% upload
+          span.help-text(style="padding:15px;") *Upload image for your thumbnail
         button.form-submit(type='submit') Add
 block footer
     footer.bg-change © Business Rating App

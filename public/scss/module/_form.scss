@@ -3,7 +3,7 @@ form{
     @include flexy(column){
         width: 400px;
         align-self: center;
-        margin-top:em(100px);
+        margin-top:em(70px);
         padding:em(40px) em(20px);
         background: lighten($primary--bg,10%);
     }

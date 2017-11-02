@@ -128,7 +128,9 @@
       }
     });
  }
+  
 
+  //loading cities from backend
   if(state){
     state.addEventListener('change',function(e){
       e.preventDefault();
@@ -145,6 +147,28 @@
       .catch(function (error) {
         console.error(error);
       });
+    });
+  }
+
+  //saving company data 
+  if(_el('#add-company')){
+    _el('#add-company').addEventListener('submit',function(e){
+      e.preventDefault();
+      const data = new FormData(this);
+        axios.post('/company/add',data)
+        .then(function(response){
+          if(response.data.error){
+            _el('#flashes').innerHTML = "<div class='flash-error'>"+ response.data.error +"</div>";
+          }
+          if(response.data.success){
+            _el('#flashes').innerHTML = "<div class='flash-success'>"+ response.data.success +"</div>";
+             //reset form on success
+            _el('#add-company').reset();
+          }
+        })
+        .catch(function(error){
+          console.error(error);
+        })
     });
   }
 

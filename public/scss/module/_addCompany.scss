@@ -24,6 +24,10 @@
         align-self: flex-start;
         background: $apple;
         padding: 0;
+        i{
+            margin-left: 12px;
+            margin-top: 12px;
+        }
     }
     .input-group{
         position: relative;

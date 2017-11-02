@@ -6,6 +6,10 @@ block content
       form(action='/register' method="POST")
         h2 Sign Up
         hr
+        if success.length > 0
+          div.flash-success #{success}
+        if error.length > 0
+          div.flash-error   #{error}
         input#name.form-input(type='text' name="username" placeholder='Enter your fullname')
         input#email.form-input(type='email' name="email" placeholder='example@abc.com')
         input#password.form-input(type='password' name='password', placeholder='Password')

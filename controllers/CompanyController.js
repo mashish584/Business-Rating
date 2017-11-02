@@ -1,4 +1,5 @@
-
+const mongoose = require('mongoose');
+const Company = mongoose.model('Company');
 
 exports.home = (req,res)=>{
     res.render('index',{title:'Home'});
@@ -10,5 +11,11 @@ exports.addCompany = (req,res) => {
 };
 
 exports.getCompany = (req,res) => {
-    res.render('company',{title:'Company'})
+    res.render('company',{title:'Company'});
+};
+
+exports.saveCompany = async(req,res) => {
+   await new Company(req.body).save();
+   res.json({success:'Company Saved'});
+   return;
 };

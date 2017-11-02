@@ -55,7 +55,6 @@ exports.ValidationErrors = (err, req, res, next) => {
 	if(!err.errors) return next(err);
 	//get all the keys from 'err.errors' object
 	const errorKeys = Object.keys(err.errors);
-	console.log(err.errors);
 	//loop through each key and set it on flash
 	errorKeys.forEach(key => req.flash('error',err.errors[key].message));
 	//redirect user to previous page

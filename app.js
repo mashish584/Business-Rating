@@ -67,8 +67,8 @@ app.use(flash());
 // pass variables to templates
 app.use((req, res, next) => {
     res.locals.h = helper;
-    res.locals.error = req.flash('error');
-    res.locals.success = req.flash('success');
+    res.locals.error = req.flash('error') || null;
+    res.locals.success = req.flash('success') || null;
     res.locals.user = req.user || null;
     //call next peice of middleware
     next();

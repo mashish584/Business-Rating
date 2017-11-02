@@ -17,7 +17,7 @@ body{
 
 ::selection {
     color: inherit;
-    background: $primary--bg;
+    background: darken($primary--bg,20%);
 }
 
 a{
