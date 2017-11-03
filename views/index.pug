@@ -9,8 +9,10 @@ block content
           .search
             input(type='text', name='search', data-target='comapanies', placeholder='Search')
             button.fa.fa-search
-        div.flash-success
-        div.flash-error
+        if success.length > 0
+          div.flash-success #{success}
+        if error.length > 0
+          div.flash-error   #{error}
         .business-cards
           .card
             .card-image

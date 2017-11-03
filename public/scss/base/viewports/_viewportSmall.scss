@@ -95,6 +95,14 @@
                 }
             }
         }
+
+        &--form{
+            form{
+                width:95%;
+                padding-left:0;
+                padding-right:0;
+            }
+        }
         
         &--basic{
             flex-direction: column;

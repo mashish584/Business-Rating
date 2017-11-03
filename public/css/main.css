@@ -83,6 +83,10 @@ hr {
   background: url(../img/star-on.png) no-repeat center;
   background-size: 100%; }
 
+.star-off {
+  background: url(../img/star-off.png) no-repeat center;
+  background-size: 100%; }
+
 .margin-top {
   margin-top: 3.125em; }
 
@@ -98,7 +102,7 @@ hr {
 .navbar_item > span img, .company_profile--employees a img {
   border-radius: 50%; }
 
-.company_profile, .company_profile--basic, .company_profile--reviews li {
+.company_profile, .company_profile--basic, .company_profile--reviews li, .company_profile--form form {
   margin-left: auto;
   margin-right: auto; }
 
@@ -273,14 +277,20 @@ form {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row; }
-  .stars i {
+  .stars i,
+  .stars label {
     width: 12px;
     height: 12px;
     margin: 0.625em 0.1875em; }
+  .stars label {
+    width: 20px;
+    height: 20px; }
   .stars span {
     align-self: center;
     margin-left: auto;
     font-weight: 100; }
+  .stars input[type="checkbox"] {
+    display: none; }
 
 .business-cards {
   display: flex;
@@ -542,6 +552,19 @@ form {
         .company_profile--reviews li .review a h3 {
           font-size: 1.125em;
           margin-bottom: 0.6em; }
+  .company_profile--form form {
+    width: 80%; }
+    .company_profile--form form textarea {
+      height: 120px;
+      max-height: 120px; }
+    .company_profile--form form .stars-form {
+      margin-left: auto;
+      margin-bottom: 0.75em; }
+      .company_profile--form form .stars-form b {
+        margin-right: 0.625em;
+        padding-top: 0.4375em; }
+      .company_profile--form form .stars-form label {
+        margin: 0 0.1875em; }
 
 footer {
   padding: 0.9375em;
@@ -683,9 +706,9 @@ footer {
   transition: 300ms ease-in-out; }
 
 #form-wrapper {
-  height: 100vh;
   background: url(../img/background.jpg) no-repeat center;
-  background-size: cover; }
+  background-size: cover;
+  padding-bottom: 6.25em; }
 
 #content-wrapper {
   height: 100%;
@@ -865,6 +888,10 @@ footer {
         width: 100px; }
       .company_profile--reviews li .review {
         font-size: 0.75em; }
+    .company_profile--form form {
+      width: 95%;
+      padding-left: 0;
+      padding-right: 0; }
     .company_profile--basic {
       flex-direction: column;
       padding: 0.625em;

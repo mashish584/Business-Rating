@@ -26,3 +26,25 @@
         }
     }
 }
+
+&--form{
+    form{
+        width:80%;
+        @extend %center;
+        textarea{
+            height: 120px;
+            max-height: 120px;
+        }
+        .stars-form{
+            b{
+                margin-right: em(10px); 
+                padding-top:em(7px);
+            }
+            label{
+                margin:0 em(3px);
+            }
+            margin-left: auto;
+            margin-bottom:em(12px);
+        }
+    }
+}

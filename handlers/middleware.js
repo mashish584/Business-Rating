@@ -54,11 +54,31 @@ exports.validateCompany = (req,res,next) => {
     next();
 };
 
+//middleware for review form
+exports.validateReview = (req,res,next) => {
+  req.sanitize('review').trim();
+  req.checkBody('review','Please write your review').notEmpty();
+  const errors = req.validationErrors();
+    if(errors){
+      const message = errors[0].msg;
+      req.flash('error',message);
+      res.redirect('back');
+      return;    
+    }
+
+  if(req.body.rating == "0"){
+    req.flash('error','Please give rating');
+    res.redirect('back');
+    return;  
+  }
+  next();
+};
+
 //middleware to check empty fields in 
 //login form
 exports.validateAuth = (req,res,next) => {
-  req.checkBody('username','Username or Password are required.').notEmpty();
-  req.checkBody('password','Username or Password are required.').notEmpty();
+  req.checkBody('email','Email or Password are required.').notEmpty();
+  req.checkBody('password','Email or Password are required.').notEmpty();
    //catch all validation errors
    const errors = req.validationErrors();
    if(errors){

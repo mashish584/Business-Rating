@@ -39,7 +39,8 @@
          menuDrop      =   _el('.dropdown-menu'),
          sideNav       =   _el('.side-menu'),
          switches      =   __el('.settings--switch'),
-         state         =   _el('#state');
+         state         =   _el('#state'),
+         rating        =   __el('#form-rating');
 
   let toggleState      =   false;
 
@@ -128,6 +129,26 @@
       }
     });
  }
+
+  /**************************
+   User Rating Interaction
+  ***************************/
+  for(star of rating){
+    star.addEventListener('click',function(){
+       //delete all star-on
+       for(let i=0;i<5;i++){
+          rating[i].classList.add('star-off');
+          rating[i].classList.remove('star-on');
+       }
+       //add star-on upto current index
+       for(let i=0;i<this.dataset.rating;i++){
+          rating[i].classList.add('star-on');
+          rating[i].classList.remove('star-off');
+       }
+       _el('#star_rate').value = this.dataset.rating;
+       _el('#star_rate').setAttribute('checked',true);
+    });
+  }
   
 
   //loading cities from backend

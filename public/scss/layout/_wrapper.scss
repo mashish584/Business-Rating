@@ -3,9 +3,9 @@
 
 #form-wrapper{
     @extend %container;
-    height: 100vh;
     background: url(#{$path--img}/background.jpg) no-repeat center;
     background-size: cover;
+    padding-bottom: em(100px);
 }
 
 // Content Wrapper
