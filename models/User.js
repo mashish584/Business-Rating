@@ -4,6 +4,7 @@ mongoose.promise = global.promise;
 const passportLocalMongoose = require('passport-local-mongoose');
 const md5 = require('md5');
 
+
 const userSchema = new Schema({
   username:{
       type: String,
@@ -38,6 +39,7 @@ userSchema.plugin(passportLocalMongoose,{
         'UserExistsError': 'Email already registered.',
     }
 });
+
 
 const User = mongoose.model('User',userSchema);
 module.exports = User;

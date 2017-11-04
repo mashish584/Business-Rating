@@ -8,15 +8,15 @@
 //middleware for user registration
 
 exports.validateRegister = (req,res,next) => {
-    req.sanitizeBody('username');
-    req.checkBody('username','Please enter username.').notEmpty();
-    req.checkBody('username','Username must be greater than 4 characters.').isLength({min:5});
-    req.checkBody('email','Please enter your email address.').notEmpty();
-    req.checkBody('email','Email is not valid.').isEmail();
-    req.checkBody('password','Please enter your password').notEmpty();
-    req.checkBody('password','Password must be greater than 7 characters.').isLength({min:8});
-    req.checkBody('confirm','Please confirm your password').notEmpty();
-    req.checkBody('confirm','Confirm password not matched.').equals(req.body.password);
+      req.sanitizeBody('username');
+      req.checkBody('username','Please enter your name.').notEmpty();
+      req.checkBody('username','Username must be greater than 4 characters.').isLength({min:5});
+      req.checkBody('email','Please enter your email address.').notEmpty();
+      req.checkBody('email','Email is not valid.').isEmail();
+      req.checkBody('password','Please enter your password').notEmpty();
+      req.checkBody('password','Password must be greater than 7 characters.').isLength({min:8});
+      req.checkBody('confirm','Please confirm your password').notEmpty();
+      req.checkBody('confirm','Confirm password not matched.').equals(req.body.password);
     
       //catch all validation errors
       const errors = req.validationErrors();

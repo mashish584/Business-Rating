@@ -51,10 +51,18 @@ exports.notFound = (req, res, next) => {
 */
 
 exports.ValidationErrors = (err, req, res, next) => {
-	//call next 'errorHandler' middleware if we don't have 'errors' object in 'err'
+
+	//redirect user with error if err.name exists
+	if(!err.errors && err.name){
+		req.flash('error',err.message);
+		res.redirect('back');
+		return;
+	}
+ 	//call next 'errorHandler' middleware if we don't have 'errors' object in 'err'
 	if(!err.errors) return next(err);
 	//get all the keys from 'err.errors' object
 	const errorKeys = Object.keys(err.errors);
+	
 	//loop through each key and set it on flash
 	errorKeys.forEach(key => req.flash('error',err.errors[key].message));
 	//redirect user to previous page
