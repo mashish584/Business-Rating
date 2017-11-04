@@ -553,16 +553,21 @@ form {
           font-size: 1.125em;
           margin-bottom: 0.6em; }
   .company_profile--form form {
-    width: 80%; }
+    width: 80%;
+    padding-top: 0; }
     .company_profile--form form textarea {
+      margin-top: 1.5625em;
       height: 120px;
-      max-height: 120px; }
+      max-height: 120px;
+      background: white;
+      border: 2px solid #c2c2c2; }
     .company_profile--form form .stars-form {
-      margin-left: auto;
+      margin-top: 0.75em;
       margin-bottom: 0.75em; }
       .company_profile--form form .stars-form b {
         margin-right: 0.625em;
-        padding-top: 0.4375em; }
+        margin-left: 0.625em;
+        margin-top: -0.125em; }
       .company_profile--form form .stars-form label {
         margin: 0 0.1875em; }
 
@@ -708,7 +713,7 @@ footer {
 #form-wrapper {
   background: url(../img/background.jpg) no-repeat center;
   background-size: cover;
-  padding-bottom: 6.25em; }
+  padding-bottom: 12.5em; }
 
 #content-wrapper {
   height: 100%;
@@ -830,7 +835,8 @@ footer {
     flex-basis: 48%; } }
 @media (max-width: 586px) {
   #form-wrapper {
-    height: auto; }
+    height: auto;
+    padding-bottom: 0; }
     #form-wrapper form {
       margin: 0;
       width: 100%;
@@ -927,7 +933,8 @@ footer {
   #add-company,
   #edit-company {
     width: 100%;
-    margin: 0; }
+    margin: 0;
+    box-shadow: none; }
 
   .company_profile li {
     padding: 1.875em 0.625em;

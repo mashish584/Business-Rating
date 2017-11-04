@@ -68,11 +68,11 @@ router.get('/auth/google/callback',passport.authenticate('google',{
 
 //Company Controller
 router.get('/home',companyController.home);
-router.get('/company/add',companyController.addCompany);
+router.get('/company/add',middleware.authGuard,companyController.addCompany);
 router.get('/company/:id',companyController.getCompany);
 
 // User Controller
-router.get('/profile',userController.getProfile);
+router.get('/profile',middleware.authGuard,userController.getProfile);
 
 // AJAX Handles via axios
 router.get('/getCities',function(req,res){

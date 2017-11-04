@@ -30,21 +30,26 @@
 &--form{
     form{
         width:80%;
+        padding-top: 0;
         @extend %center;
         textarea{
+            margin-top: em(25px);
             height: 120px;
             max-height: 120px;
+            background:lighten($primary--bg,10%);
+            border:2px solid darken($primary--bg,20%);
         }
         .stars-form{
+            margin-top:em(12px);
+            margin-bottom:em(12px);
             b{
                 margin-right: em(10px); 
-                padding-top:em(7px);
+                margin-left: em(10px);
+                margin-top:em(-2px);
             }
             label{
                 margin:0 em(3px);
             }
-            margin-left: auto;
-            margin-bottom:em(12px);
         }
     }
 }

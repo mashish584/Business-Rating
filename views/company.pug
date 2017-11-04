@@ -80,20 +80,19 @@ block content
         h2.headline Reviews
         .company_profile--form
           form(action="/company/564564/review" method="POST")
-            h2 Submit your review
-            hr
             if success.length > 0
               div.flash-success #{success}
             if error.length > 0
               div.flash-error   #{error}
+            textarea(name="review" placeholder="Tell us about your experience with us")
             div.stars-form.stars
+              b Your Rating :
               label.star-off#form-rating(data-rating="1")
               label.star-off#form-rating(data-rating="2")
               label.star-off#form-rating(data-rating="3")
               label.star-off#form-rating(data-rating="4")
               label.star-off#form-rating(data-rating="5")
               input(type="checkbox" name="rating" id="star_rate" value="0" checked)
-            textarea(name="review" placeholder="Tell us about your experience with us")
             button.form-submit Submit
         .company_profile--reviews
           li
