@@ -10,106 +10,27 @@ block content
             input(type='text', name='search', data-target='comapanies', placeholder='Search')
             button.fa.fa-search
         .business-cards
-          .card
-            .card-image
-              img(src='https://unsplash.it/500/500', alt='')
-            .card-content
-              h2 Heading 1
-              .stars
-                i.star-on
-                i.star-on
-                i.star-on
-                i.star-on
-                i.star-on
-                span 5+ rating
-              hr
-              span
-                i.fa.fa-map-marker
-                | New Delhi,India
-            .card-action
-              a(href='')
-                | See More 
-                i.fa.fa-share
-          .card
-            .card-image
-              img(src='https://unsplash.it/500/500', alt='')
-            .card-content
-              h2 Heading 1
-              .stars
-                i.star-on
-                i.star-on
-                i.star-on
-                i.star-on
-                i.star-on
-                span 5+ rating
-              hr
-              span
-                i.fa.fa-map-marker
-                | New Delhi,India
-            .card-action
-              a(href='')
-                | See More 
-                i.fa.fa-share
-          .card
-            .card-image
-              img(src='https://unsplash.it/500/500', alt='')
-            .card-content
-              h2 Heading 1
-              .stars
-                i.star-on
-                i.star-on
-                i.star-on
-                i.star-on
-                i.star-on
-                span 5+ rating
-              hr
-              span
-                i.fa.fa-map-marker
-                | New Delhi,India
-            .card-action
-              a(href='')
-                | See More 
-                i.fa.fa-share
-          .card
-            .card-image
-              img(src='https://unsplash.it/500/500', alt='')
-            .card-content
-              h2 Heading 1
-              .stars
-                i.star-on
-                i.star-on
-                i.star-on
-                i.star-on
-                i.star-on
-                span 5+ rating
-              hr
-              span
-                i.fa.fa-map-marker
-                | New Delhi,India
-            .card-action
-              a(href='')
-                | See More 
-                i.fa.fa-share
-          .card
-            .card-image
-              img(src='https://unsplash.it/500/500', alt='')
-            .card-content
-              h2 Heading 1
-              .stars
-                i.star-on
-                i.star-on
-                i.star-on
-                i.star-on
-                i.star-on
-                span 5+ rating
-              hr
-              span
-                i.fa.fa-map-marker
-                | New Delhi,India
-            .card-action
-              a(href='')
-                | See More 
-                i.fa.fa-share
+          each company in companies
+            .card
+              .card-image
+                img(src=`./img/uploads/${company.photo}`, alt='')
+              .card-content
+                h2= company.name
+                .stars
+                  i.star-on
+                  i.star-on
+                  i.star-on
+                  i.star-on
+                  i.star-on
+                  span 5+ rating
+                hr
+                span
+                  i.fa.fa-map-marker
+                  | #{company.city},#{company.state}
+              .card-action
+                a(href=`/company/${company._id}`)
+                  | See More 
+                  i.fa.fa-share
         hr
         .pagination
           a(href='') Previous

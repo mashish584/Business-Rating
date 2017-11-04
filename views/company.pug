@@ -5,12 +5,12 @@ block content
       +navigation()
       .company_profile
         .company_profile--header
-          img.item(src='https://unsplash.it/500/500', alt='')
+          img.item(src=`/img/uploads/${company.photo}`, alt='')
           .company-info.item
-            h2 Cras ornare tristique elit.
+            h2= company.name
             hr
             .stars
-              a.anchor-button(href='') Write a Review
+              a.anchor-button(href=(user != null?'#review':'/'))=(user != null?'Write a review':'Login for review')
               i.star-on
               i.star-on
               i.star-on
@@ -18,8 +18,7 @@ block content
               i.star-on
               span (5+)
             .about
-              | Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.
-              | Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.
+              ss
             .social-media-links
               a.fa.fa-facebook(href='')
               a.fa.fa-google(href='')
@@ -78,22 +77,23 @@ block content
             .about
               span Ashish Mehra
         h2.headline Reviews
-        .company_profile--form
-          form(action="/company/564564/review" method="POST")
-            if success.length > 0
-              div.flash-success #{success}
-            if error.length > 0
-              div.flash-error   #{error}
-            textarea(name="review" placeholder="Tell us about your experience with us")
-            div.stars-form.stars
-              b Your Rating :
-              label.star-off#form-rating(data-rating="1")
-              label.star-off#form-rating(data-rating="2")
-              label.star-off#form-rating(data-rating="3")
-              label.star-off#form-rating(data-rating="4")
-              label.star-off#form-rating(data-rating="5")
-              input(type="checkbox" name="rating" id="star_rate" value="0" checked)
-            button.form-submit Submit
+        if user
+          .company_profile--form#review
+            form(action=`/company/${company._id}/review` method="POST")
+              if success.length > 0
+                div.flash-success #{success}
+              if error.length > 0
+                div.flash-error   #{error}
+              textarea(name="review" placeholder="Tell us about your experience with us")
+              div.stars-form.stars
+                b Your Rating :
+                label.star-off#form-rating(data-rating="1")
+                label.star-off#form-rating(data-rating="2")
+                label.star-off#form-rating(data-rating="3")
+                label.star-off#form-rating(data-rating="4")
+                label.star-off#form-rating(data-rating="5")
+                input(type="checkbox" name="rating" id="star_rate" value="0" checked)
+              button.form-submit Submit
         .company_profile--reviews
           li
             img(src='https://unsplash.it/500/500', alt='')

@@ -67,7 +67,7 @@ router.get('/auth/google/callback',passport.authenticate('google',{
 
 
 //Company Controller
-router.get('/home',companyController.home);
+router.get('/home',catchErrors(companyController.home));
 router.get('/company/add',middleware.authGuard,companyController.addCompany);
 router.get('/company/:id',companyController.getCompany);
 

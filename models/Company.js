@@ -43,8 +43,16 @@ const companySchema = new Schema({
             ref:'User'
         }
     ]
+},{
+    toJSON:{virtuals:true},
+    toObject:{virtuals:true}
+});
+
+companySchema.virtual('reviews',{
+    ref:'Review',
+    localField:'_id',
+    foreignField:'company'
 });
 
 const Company = mongoose.model('Company',companySchema);
-
 module.exports = companySchema;
