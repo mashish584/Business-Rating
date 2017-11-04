@@ -50,15 +50,15 @@ exports.notFound = (req, res, next) => {
 	then we're going to show the error as a flash
 */
 
-exports.ValidationErrors = (err, req, res, next) => {
-
-	//redirect user with error if err.name exists
-	if(!err.errors && err.name){
+exports.ValidationErrors = (err, req, res, next) => {	
+	//Incase of error with name "user-exists" 
+	//go for flash
+	if(err.name == "UserExistsError"){
 		req.flash('error',err.message);
 		res.redirect('back');
 		return;
 	}
- 	//call next 'errorHandler' middleware if we don't have 'errors' object in 'err'
+	//call next 'errorHandler' middleware if we don't have 'errors' object in 'err'
 	if(!err.errors) return next(err);
 	//get all the keys from 'err.errors' object
 	const errorKeys = Object.keys(err.errors);
