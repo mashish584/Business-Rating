@@ -72,7 +72,7 @@ router.get('/company/add',middleware.authGuard,companyController.addCompany);
 router.get('/company/:id',companyController.getCompany);
 
 // User Controller
-router.get('/profile',middleware.authGuard,userController.getProfile);
+router.get('/profile/:id',middleware.authGuard,userController.getProfile);
 
 // AJAX Handles via axios
 router.get('/getCities',function(req,res){
@@ -86,6 +86,6 @@ router.get('/getCities',function(req,res){
 router.post('/login',middleware.validateAuth,accountController.signin);
 router.post('/register',middleware.validateRegister,catchErrors(accountController.signup),accountController.signin);
 router.post('/company/add',multer(config).single('photo'),middleware.validateCompany,catchErrors(resize),catchErrors(companyController.saveCompany));
-router.post('/company/:id/review',middleware.validateReview,catchErrors(companyController.addReview))
+router.post('/company/:id/review',middleware.validateReview,catchErrors(companyController.addReview));
 
 module.exports = router;

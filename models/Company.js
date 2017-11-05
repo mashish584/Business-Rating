@@ -54,5 +54,24 @@ companySchema.virtual('reviews',{
     foreignField:'company'
 });
 
+companySchema.virtual('average').get(function(){
+    let ratings =  this.reviews.map(review => {
+        return review.rating;
+    });
+    if(ratings.length != "0"){
+        let average = ratings.reduce((a,b)=> a+b);
+        return average/ratings.length;
+    }
+    return 0;
+});
+
+function populate(next){
+    this.populate('reviews');
+    next();
+}
+
+companySchema.pre('find',populate);
+companySchema.pre('findOne',populate);
+
 const Company = mongoose.model('Company',companySchema);
-module.exports = companySchema;
+module.exports = Company;

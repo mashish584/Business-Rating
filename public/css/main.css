@@ -87,6 +87,10 @@ hr {
   background: url(../img/star-off.png) no-repeat center;
   background-size: 100%; }
 
+.star-half {
+  background: url(../img/star-half.png) no-repeat center;
+  background-size: 100%; }
+
 .margin-top {
   margin-top: 3.125em; }
 

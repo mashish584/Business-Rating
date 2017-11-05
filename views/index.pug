@@ -16,13 +16,23 @@ block content
                 img(src=`./img/uploads/${company.photo}`, alt='')
               .card-content
                 h2= company.name
+                -var i=0;
+                -var full = parseInt(company.average/1);
+                -var half = company.average%1?true:false
+                -var off = 5-full;
+                if half
+                  -off--
                 .stars
-                  i.star-on
-                  i.star-on
-                  i.star-on
-                  i.star-on
-                  i.star-on
-                  span 5+ rating
+                  while i < full
+                    i.star-on
+                    -i++
+                  if half
+                    i.star-half
+                  -i=0;
+                  while i < off
+                    i.star-off
+                    -i++
+                  span #{company.average.toFixed(1)} rating
                 hr
                 span
                   i.fa.fa-map-marker

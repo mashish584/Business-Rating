@@ -16,7 +16,7 @@ mixin homeNav()
           i.fa.fa-angle-down
         .dropdown-menu
           if user
-            a(href='/profile')
+            a(href=`/profile/${user._id}`)
               i.fa.fa-user-o
               | Your Profile
             a(href='/logout')

@@ -4,7 +4,6 @@ const Review = mongoose.model('Review');
 
 exports.home = async(req,res)=>{
     const companies = await Company.find({});
-    res.json(companies);
     res.render('index',{title:'Home',companies});
 };
 
@@ -15,7 +14,6 @@ exports.addCompany = (req,res) => {
 
 exports.getCompany = async(req,res) => {
     const company = await Company.findOne({_id:req.params.id});
-    // res.json(company);
     res.render('company',{title:'Company',company});
 };
 

@@ -51,7 +51,10 @@ app.use(session({
     secret: process.env.SECRET,
     key: process.env.KEY,
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    store: new MongoStore({
+        mongooseConnection:mongoose.connection
+    })
 }));
 
 // passport middleware

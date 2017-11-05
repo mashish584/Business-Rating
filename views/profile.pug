@@ -5,7 +5,7 @@ block content
     +navigation()
     .user_profile
       .user_profile--header
-        img(src='https://unsplash.it/500/500', alt='')
+        img(src=`${profile.gravatar}` alt='')
       .user_profile--section
         .about
           h4
@@ -26,7 +26,7 @@ block content
             hr
             .form-group
               label(for='name') Name
-              input#name(type='text', name='name')
+              input#name(type='text' name='name' value=`${profile.username}`)
             .form-group
               label(for='Introduction') Introduction
               textarea(name='about')

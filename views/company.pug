@@ -1,6 +1,13 @@
 extend layout
 
 block content
+    //- Check if user given a review or not
+    -var given = false
+    -var rating = 0;
+        each review in company.reviews
+          if JSON.stringify(review.reviewer._id) == JSON.stringify(user._id)
+            -rating = review.rating
+            -given = !given
     #content-wrapper
       +navigation()
       .company_profile
@@ -10,74 +17,65 @@ block content
             h2= company.name
             hr
             .stars
-              a.anchor-button(href=(user != null?'#review':'/'))=(user != null?'Write a review':'Login for review')
-              i.star-on
-              i.star-on
-              i.star-on
-              i.star-on
-              i.star-on
-              span (5+)
+              if !given
+                a.anchor-button(href=(user != null?'#review':'/'))=(user != null?'Write a review':'Login for review')
+              -var i=0;
+              -var full = parseInt(company.average/1);
+              -var half = company.average%1?true:false
+              -var off = 5-full;
+              if half
+                -off--
+              .stars
+                while i < full
+                  i.star-on
+                  -i++
+                if half
+                  i.star-half
+                -i=0;
+                while i < off
+                  i.star-off
+                  -i++
+                span #{company.average.toFixed(1)} rating out of 5
             .about
               ss
             .social-media-links
-              a.fa.fa-facebook(href='')
-              a.fa.fa-google(href='')
-              a.fa.fa-globe(href='')
-            a.normal-btn(href='') Register me as a Employee
+              if company.social.facebook
+                a.fa.fa-facebook(href='')
+              if company.social.google
+                a.fa.fa-google(href='')
+              if company.social.website
+               a.fa.fa-globe(href='')
+            if user
+              a.normal-btn(href='') Register me as a Employee
         .company_profile--basic
           span
             i.fa.fa-map-marker
-            | New Delhi,India
+            | #{company.city}, #{company.state}
           span
             i.fa.fa-phone
-            | +91-8542265845
+            | +91-#{company.contact}
           .stars
-            span Your Rating : 
-            i.star-on
-            i.star-on
-            i.star-on
-            i.star-on
-            i.star-on
+            span Your Rating :
+            -var i = 0;
+            -var off = 5-rating;
+            while i < rating
+              i.star-on
+              -i++
+            -i=0; 
+            while i < off
+              i.star-off
+              -i++
         h2.headline Employees
         .company_profile--employees
-          a(href='')
-            img(src='https://unsplash.it/500/500', alt='')
-            .about
-              span Ashish Mehra
-          a(href='')
-            img(src='https://unsplash.it/500/500', alt='')
-            .about
-              span Ashish Mehra
-          a(href='')
-            img(src='https://unsplash.it/500/500', alt='')
-            .about
-              span Ashish Mehra
-          a(href='')
-            img(src='https://unsplash.it/500/500', alt='')
-            .about
-              span Ashish Mehra
-          a(href='')
-            img(src='https://unsplash.it/500/500', alt='')
-            .about
-              span Ashish Mehra
-          a(href='')
-            img(src='https://unsplash.it/500/500', alt='')
-            .about
-              span Ashish Mehra
-          a(href='')
-            img(src='https://unsplash.it/500/500', alt='')
-            .about
-              span Ashish Mehra
-          a(href='')
-            img(src='https://unsplash.it/500/500', alt='')
-            .about
-              span Ashish Mehra
-          a(href='')
-            img(src='https://unsplash.it/500/500', alt='')
-            .about
-              span Ashish Mehra
+          if company.employees.length != 0
+            a(href='')
+              img(src='https://unsplash.it/500/500', alt='')
+              .about
+                span Ashish Mehra
+          else
+            p(style="margin:auto") Employees not available.
         h2.headline Reviews
-        if user
+        if user && !given
           .company_profile--form#review
             form(action=`/company/${company._id}/review` method="POST")
               if success.length > 0
@@ -95,44 +93,24 @@ block content
                 input(type="checkbox" name="rating" id="star_rate" value="0" checked)
               button.form-submit Submit
         .company_profile--reviews
-          li
-            img(src='https://unsplash.it/500/500', alt='')
-            .review
-              a(href='')
-                h3 Adam Saleh
-              .stars
-                i.star-on
-                i.star-on
-                i.star-on
-                i.star-on
-                i.star-on
-              p
-                | Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.
-          li
-            img(src='https://unsplash.it/500/500', alt='')
-            .review
-              a(href='')
-                h3 Adam Saleh
-              .stars
-                i.star-on
-                i.star-on
-                i.star-on
-                i.star-on
-                i.star-on
-              p
-                | Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.
-          li
-            img(src='https://unsplash.it/500/500', alt='')
-            .review
-              a(href='')
-                h3 Adam Saleh
-              .stars
-                i.star-on
-                i.star-on
-                i.star-on
-                i.star-on
-                i.star-on
-              p
-                | Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.
+          if company.reviews.length != 0
+            each review in company.reviews
+              li
+                img(src=`${review.reviewer.gravatar}`, alt='')
+                .review
+                  a(href='')
+                    h3= review.reviewer.name
+                  .stars
+                    -var i = 0;
+                    -var off = 5-review.rating;
+                      while i < review.rating
+                        i.star-on
+                        -i++
+                      -i=0; 
+                      while i < off
+                        i.star-off
+                        -i++
+                  p
+                    | #{review.reviewer.name}
 block footer
     footer(style='background:#fff;') © Business Rating App
