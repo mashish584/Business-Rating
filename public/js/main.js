@@ -193,4 +193,26 @@
     });
   }
 
+  if(_el('#form-two')){
+    _el('#form-two').addEventListener('submit',function(e){
+      e.preventDefault();
+      const data = {oldPassword:this.oldPassword.value,newPassword:this.newPassword.value,confirmPassword:this.confirmPassword.value};
+      axios.post(`/profile/${this.id.value}/update/password`,data)
+      .then(function(response){
+        if(response.data.error){
+            _el('#flashes').innerHTML = "<div class='flash-error'>"+ response.data.error +"</div>";
+        }
+
+        if(response.data.success){
+          _el('#flashes').innerHTML = "<div class='flash-success'>"+ response.data.success +"</div>";
+        }
+         //reset form on success
+          _el('#form-two').reset();
+      })
+      .catch(function(error){
+        console.log(error);
+      })
+    });
+  }
+
 }

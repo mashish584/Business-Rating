@@ -697,6 +697,8 @@ footer {
       .user_profile--section .settings form textarea {
         background: transparent;
         border: 1px solid gainsboro; }
+      .user_profile--section .settings form textarea {
+        height: 100px; }
       .user_profile--section .settings form:last-child {
         display: none; }
     .user_profile--section .settings:after {
@@ -800,6 +802,7 @@ footer {
     padding: 0 0.625em;
     flex-direction: column; }
     .user_profile--section .about {
+      text-align: center;
       margin-top: 9.375em;
       padding: 0.625em; }
     .user_profile--section .settings {

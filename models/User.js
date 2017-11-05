@@ -17,6 +17,10 @@ const userSchema = new Schema({
       unique:true,
       trim:true
   },
+  about:{
+    type:String,
+    trim:true
+  },
   fb_id:String,
   fb_token:String,
   google_id:String,

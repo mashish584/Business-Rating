@@ -1,4 +1,6 @@
 
+const mongoose = require('mongoose');
+const User = mongoose.model('User');
 
 
 /************************************
@@ -39,7 +41,7 @@ exports.validateCompany = (req,res,next) => {
     req.checkBody('contact','Invalid contact number').matches(/^[0-9]{1,10}$/);
     req.sanitize('about').trim();
     req.checkBody('about','Please tell us about your company.').notEmpty();
-    req.checkBody('about','About text should be between 25-250 characters').isLength({min:25,max:250});
+    req.checkBody('about','About text should be more than 75 characters.').isLength({min:75});
     const errors = req.validationErrors();
     if(errors){
       const message = errors[0].msg;
@@ -73,6 +75,39 @@ exports.validateReview = (req,res,next) => {
   }
   next();
 };
+
+
+//middleware to validate bio update
+exports.validateBio = (req,res,next) => {
+    req.sanitize('about').trim();
+    req.checkBody('about','Bio is required.').notEmpty();
+    req.checkBody('about','Bio length should be more than 50 charsacters').isLength({min:50});
+    const errors = req.validationErrors();
+    if(errors){
+      const message = errors[0].msg;
+      req.flash('error',message);
+      res.redirect('back');
+      return;    
+    }
+    next(); 
+};
+
+//middleware to validate pass
+exports.validatePass = async(req,res,next) => {
+    // req.checkBody('oldPassword','Old password is required.').notEmpty();
+    req.checkBody('newPassword','New password is required.').notEmpty();
+    req.checkBody('confirmPassword','Confirm password is required.').notEmpty();
+    req.checkBody('newPassword','New Password should have length of 7 or more characters.').isLength({min:7});
+    req.checkBody('confirmPassword','Password not matched.').equals(req.body.newPassword);
+    const errors = req.validationErrors();
+    if(errors){
+      const message = errors[0].msg;
+      res.json({error:message});
+      return;
+    }    
+    next(); 
+};
+
 
 //middleware to check empty fields in 
 //login form
