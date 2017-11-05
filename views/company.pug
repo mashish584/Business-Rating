@@ -46,7 +46,15 @@ block content
               if company.social.website
                a.fa.fa-globe(href='')
             if user
-              a.normal-btn(href='') Register me as a Employee
+              -var isWorking = false;
+              each employee in company.employees
+                if JSON.stringify(employee) == JSON.stringify(user._id)
+                  -isWorking = true;
+              form(action=`/company/${company._id}/employee/add` method="POST" style="padding: 0;margin-top: 10px;margin-left: auto;")
+                if !isWorking
+                  button.normal-btn(type="submit") Register me as a Employee
+                else
+                  button.normal-btn(type="submit" style="background:red;") Remove me as a Employee
         .company_profile--basic
           span
             i.fa.fa-map-marker
@@ -96,10 +104,10 @@ block content
           if company.reviews.length != 0
             each review in company.reviews
               li
-                img(src=`${review.reviewer.gravatar}`, alt='')
+                img(src=`${review.reviewer.gravtar}`, alt='')
                 .review
                   a(href='')
-                    h3= review.reviewer.name
+                    h3= review.reviewer.username
                   .stars
                     -var i = 0;
                     -var off = 5-review.rating;
@@ -111,6 +119,6 @@ block content
                         i.star-off
                         -i++
                   p
-                    | #{review.reviewer.name}
+                    | #{review.review}
 block footer
     footer(style='background:#fff;') © Business Rating App

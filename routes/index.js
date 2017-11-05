@@ -87,5 +87,6 @@ router.post('/login',middleware.validateAuth,accountController.signin);
 router.post('/register',middleware.validateRegister,catchErrors(accountController.signup),accountController.signin);
 router.post('/company/add',multer(config).single('photo'),middleware.validateCompany,catchErrors(resize),catchErrors(companyController.saveCompany));
 router.post('/company/:id/review',middleware.validateReview,catchErrors(companyController.addReview));
+router.post('/company/:id/employee/add',catchErrors(companyController.addEmployee));
 
 module.exports = router;

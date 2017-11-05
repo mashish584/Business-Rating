@@ -31,3 +31,16 @@ exports.addReview = async(req,res) => {
   req.flash('success','Review added');
   res.redirect('back');
 };
+
+exports.addEmployee = async(req,res) => {
+  const exist = await Company.findOne({
+                      employees:{
+                        $in: [req.user._id]
+                      }
+                });
+  const operator = exist?'$pull':'$addToSet';
+  await Company.findByIdAndUpdate(req.params.id,{
+                                    [operator]:{employees:req.user._id}
+                                  });
+  res.redirect('back');
+};
