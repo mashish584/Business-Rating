@@ -108,6 +108,23 @@ exports.validatePass = async(req,res,next) => {
     next(); 
 };
 
+// middleware to validate confirm
+exports.validateConfirm = (req,res,next) => {
+  req.checkBody('password','Password required').notEmpty();
+  req.checkBody('password','Password length should have 7 or more characters.').isLength({min:7});
+  req.checkBody('confirm','Confirm Password required.').notEmpty();
+  req.checkBody('confirm','Password not matched').equals(req.body.password);
+  //catch all validation errors
+  const errors = req.validationErrors();
+  if(errors){
+    const message = errors[0].msg;
+    req.flash('error',message);
+    res.redirect('back');
+    return;
+  }
+  next();
+};
+
 
 //middleware to check empty fields in 
 //login form

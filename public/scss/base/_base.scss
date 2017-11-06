@@ -8,6 +8,7 @@
 body{
     background: darken($primary--bg,5%);
     font-family: $font-family--three;   
+    overflow-x: hidden;
 }
 
 ::-moz-selection{

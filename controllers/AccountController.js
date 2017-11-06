@@ -20,7 +20,7 @@ exports.reset = (req,res) => {
 exports.logout = (req,res) => {
   req.logout();
   req.flash('success','Logout Success.');
-  res.redirect('back');
+  res.redirect('/');
 }
 
 exports.signin = passport.authenticate('local',{

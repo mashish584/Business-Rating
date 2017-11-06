@@ -2,6 +2,8 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const promisify = require('es6-promisify');
+const crypto = require('crypto');
+const {sendMail} = require('../handlers/mail.js');
 
 exports.getProfile = async(req,res,next) => {
     try{
@@ -13,7 +15,7 @@ exports.getProfile = async(req,res,next) => {
 };
 
 exports.updateBio = async(req,res) => {
-	const user = await User.findOneAndUpdate({_id:req.user._id});
+	const user = await User.findOne({_id:req.user._id});
 	user.about = req.body.about;
 	await user.save();
 	req.flash('success','Bio Updated');
@@ -44,4 +46,74 @@ exports.updatePassword = async(req,res) => {
 		res.json({'error':message});
 	}
 	
+};
+
+exports.sendToken = async(req,res) => {
+	try{
+
+		const user = await User.findOne({email:req.body.email});
+		if(!user){
+			req.flash('success','Check your mail account.');
+			res.redirect('back');
+		}
+		const token = crypto.createHmac('sha256', user._id.toString()).digest('hex');
+		const expire = Date.now() + 60*60*1000;
+		user.resetToken = token;
+		user.resetExpire = expire;
+		await user.save();
+		
+		const resetURL = `http://${req.headers.host}/user/reset/${token}`;
+	
+		//crate mail options
+		let data = {
+			email:req.body.email,
+			subject:'Reset Password',
+			text:`This is your reset password link ${resetURL} (Expire in 1 hour)`,
+			html : `This is your reset password <a href=${resetURL}>link</a> (Expire in 1 hour)`
+		};
+	
+		await sendMail(data);
+		req.flash('success','Check your mail account');
+		res.redirect('back');
+
+	}catch(error){
+		req.flash('error','Something went wrong.');
+		res.redirect('back');
+	}
+};
+
+exports.resetPassword = async(req,res) => {
+	
+	const user = await User.findOne({
+		resetToken: req.params.token,
+		resetExpire: {$gt:Date.now()}
+	});
+
+	if(!user){
+		req.flash('error','Password reset token invalid or expired.');
+		res.redirect('back');
+	}
+
+	res.render('reset',{title:'Reset Password'});
+
+};
+
+exports.changePassword = async (req,res) => {
+	const user = await User.findOne({
+		resetToken: req.params.token,
+		resetExpire: {$gt:Date.now()}
+	});
+
+	if(!user){
+		req.flash('error','Password reset token invalid or expired.');
+		res.redirect('back');
+	}
+
+	const setPassword = promisify(user.setPassword,user);
+	await setPassword(req.body.password);
+	user.resetToken = undefined;
+	user.resetExpire = undefined;
+	await user.save();
+	req.flash('success','Password rest successfully');
+	res.redirect('/');
 };

@@ -21,6 +21,8 @@ const userSchema = new Schema({
     type:String,
     trim:true
   },
+  resetToken:String,
+  resetExpire:Date,
   fb_id:String,
   fb_token:String,
   google_id:String,

@@ -215,4 +215,12 @@
     });
   }
 
+  // Reset Form
+  if(_el('#reset-btn')){
+    _el('#reset-btn').addEventListener('click',function(e){
+         e.preventDefault();
+        _el('#reset').classList.add('show');      
+    });
+  }
+
 }

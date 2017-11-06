@@ -17,7 +17,7 @@ block content
          // |  Remember Me
         .form-group
           button.form-submit(type='submit') Log In
-          a(href='') I forgot my password.
+          a(href='' id="reset-btn") I forgot my password.
         hr
         span
           | Login with 
@@ -25,4 +25,10 @@ block content
           a.fa.fa-facebook(href='/auth/facebook') acebook
           |  or 
           a.fa.fa-google(href='/auth/google') oogle
+
+      form(action="/user/reset" method="POST" id="reset" class="hide" style="margin-top:0;padding-top:0;")
+        hr
+        label(for="email") Your email address
+        input#email.form-input(type='email' name='email' placeholder='example@abc.com')
+        button.form-submit(type='submit') Reset
 

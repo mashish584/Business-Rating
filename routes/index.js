@@ -73,6 +73,9 @@ router.get('/company/:id',companyController.getCompany);
 
 // User Controller
 router.get('/profile/:id',userController.getProfile);
+router.get('/user/reset/:token',catchErrors(userController.resetPassword));
+
+
 
 // AJAX Handles via axios
 router.get('/getCities',function(req,res){
@@ -90,5 +93,8 @@ router.post('/company/:id/review',middleware.validateReview,catchErrors(companyC
 router.post('/company/:id/employee/add',catchErrors(companyController.addEmployee));
 router.post('/profile/:id/update/bio',middleware.validateBio,catchErrors(userController.updateBio));
 router.post('/profile/:id/update/password',middleware.validatePass,userController.updatePassword);
+router.post('/user/reset',userController.sendToken);
+router.post('/user/reset/:token',middleware.validateConfirm,catchErrors(userController.changePassword));
+
 
 module.exports = router;
