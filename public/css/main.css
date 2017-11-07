@@ -383,7 +383,7 @@ form {
   margin: 1.25em 1%;
   justify-content: center; }
   .pagination a {
-    margin: 0.3125em;
+    margin: 0.3125em 0.625em;
     background: white;
     padding: 0.3125em 0.75em;
     box-shadow: 0 1px 3px rgba(34, 34, 34, 0.2);
@@ -392,6 +392,12 @@ form {
       margin-right: auto; }
     .pagination a:last-child {
       margin-left: auto; }
+  .pagination .pages {
+    display: inherit;
+    margin: auto; }
+    .pagination .pages .active {
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+      transform: scale(1.1); }
 
 .search {
   position: relative;
