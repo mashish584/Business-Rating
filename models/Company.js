@@ -48,6 +48,11 @@ const companySchema = new Schema({
     toObject:{virtuals:true}
 });
 
+companySchema.index({
+    name:'text',
+    about:'text'
+});
+
 companySchema.virtual('reviews',{
     ref:'Review',
     localField:'_id',

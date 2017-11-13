@@ -7,8 +7,9 @@ block content
         .section-heading
           h2 Companies
           .search
-            input(type='text', name='search', data-target='comapanies', placeholder='Search')
+            input#search-input(type='text' name='search' data-target='comapanies' placeholder='Search')
             button.fa.fa-search
+            .search_result
         .business-cards
           each company in companies
             .card
@@ -43,14 +44,11 @@ block content
                   i.fa.fa-share
         hr
         .pagination
-          a(href='') Previous
-          a(href='') 1
-          a(href='') 2
-          a(href='') 3
-          a(href='') 4
-          a(href='') 5
-          a(href='') 6
-          a(href='') 7
-          a(href='') Next
+          div.pages
+            -var i=1;
+            while i <= pages
+              -var active = (i==page)?'active':'';
+              a(href=`/home?page=${i}` class=active)= i
+              -i++;
 
 

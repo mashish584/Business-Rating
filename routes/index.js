@@ -85,6 +85,8 @@ router.get('/getCities',function(req,res){
     res.json({cities});
 });
 
+router.get('/api/company',companyController.searchCompany);
+
 // Declaring all of our post routes
 router.post('/login',middleware.validateAuth,accountController.signin);
 router.post('/register',middleware.validateRegister,catchErrors(accountController.signup),accountController.signin);

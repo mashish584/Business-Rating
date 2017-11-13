@@ -1,4 +1,3 @@
-
 //code block to avoid default variables declaration errors
 {
   //javascript in 'strict' mode
@@ -220,6 +219,36 @@
     _el('#reset-btn').addEventListener('click',function(e){
          e.preventDefault();
         _el('#reset').classList.add('show');      
+    });
+  }
+
+  // search box 
+  if(_el("#search-input")){
+    _el("#search-input").addEventListener('input',function(){
+        axios.get('/api/company?search='+this.value)
+        .then(response => {
+          const company = response.data.company;
+          
+
+          if(!this.value){
+            _el('.search_result').style.display = "none";
+            return;
+          }
+
+          if(company.length == 0){
+            _el('.search_result').style.display = "block";
+            _el('.search_result').innerHTML = "Not Found : "+this.value;  
+          }
+
+          if(company.length>0){
+             let html = company.map(company => {
+                return "<a class='search_result--item' href='/company/"+company._id+"'>"+company.name+"</a>";
+             }).join('');
+             html+= "<span style='text-align:center;display:block;padding-top:5px;'>"+ company.length +" result found</span>"
+             _el('.search_result').innerHTML = html;  
+          }
+          
+        }).catch(error => console.log(error));
     });
   }
 

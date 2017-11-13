@@ -3,8 +3,18 @@ const Company = mongoose.model('Company');
 const Review = mongoose.model('Review');
 
 exports.home = async(req,res)=>{
-    const companies = await Company.find({});
-    res.render('index',{title:'Home',companies});
+    //catch page number
+    const page = req.query.page||1;
+    const limit = 3;
+    const skip = (page*limit)-limit; 
+    const companies = await Company.find().skip(skip).limit(limit).sort({created:'desc'});
+    const count = await Company.count();
+    const pages = Math.ceil(count/limit);
+    if(!companies.length){
+      res.redirect(`/home?page=${pages}`);
+      return;
+    }
+    res.render('index',{title:'Home',companies,page,pages});
 };
 
 exports.addCompany = (req,res) => {
@@ -43,4 +53,21 @@ exports.addEmployee = async(req,res) => {
                                     [operator]:{employees:req.user._id}
                                   });
   res.redirect('back');
+};
+
+
+exports.searchCompany = async(req,res) => {
+  const company = await Company.find({
+    $text:{
+      $search:req.query.search
+    }
+  },{
+    score:{$meta:'textScore'}
+  }).sort(
+     { 
+       score: { $meta: "textScore" } 
+      }
+  );
+
+  res.json({company});
 };
