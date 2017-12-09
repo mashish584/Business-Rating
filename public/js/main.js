@@ -224,6 +224,7 @@
 
   // search box 
   if(_el("#search-input")){
+    
     _el("#search-input").addEventListener('input',function(){
         axios.get('/api/company?search='+this.value)
         .then(response => {
@@ -250,6 +251,41 @@
           
         }).catch(error => console.log(error));
     });
+
+     //Handling search inputs
+    _el('#search-input').addEventListener('keyup',(e) => {
+
+       //return the function if key is not up,down or enter
+       if(![38,40,13].includes(e.keyCode)){
+          return;
+       }
+
+       const activeItem = document.querySelector('.search_result--item.active');
+       const results = document.querySelectorAll('.search_result--item');
+       let next;
+
+       if(e.keyCode === 40 && activeItem){
+          if(activeItem.nextElementSibling.localName == "a"){
+            next = activeItem.nextElementSibling;
+          }else{
+            next = results[0];
+          }
+       }else if(e.keyCode === 40){
+            next = results[0]; 
+       }else if(e.keyCode === 38){
+         next = activeItem.previousElementSibling || results[results.length-1];
+       }
+
+       if(activeItem){
+         activeItem.classList.remove('active');
+       }
+
+       next.classList.add('active');
+
+    });
+  
+
   }
+
 
 }

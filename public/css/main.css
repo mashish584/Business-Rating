@@ -418,7 +418,7 @@ form {
     width: 100%;
     top: 60px;
     z-index: 99;
-    background: #f6f6f6;
+    background: #f5f5f5;
     box-shadow: 0 2px 10px rgba(34, 34, 34, 0.2);
     display: none; }
     .search_result--item {
@@ -428,7 +428,7 @@ form {
       .search_result--item:last-child {
         border-bottom: none; }
       .search_result--item:hover {
-        background: #f5f5f5; }
+        background: white; }
 
 .company_profile {
   background: white;
@@ -793,6 +793,9 @@ footer {
   background: #fc4a1a; }
 .flash-success {
   background: #45B649; }
+
+.search_result .active {
+  background: white; }
 
 /*======================================
 *   Media QUeries

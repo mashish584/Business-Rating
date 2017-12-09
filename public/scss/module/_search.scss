@@ -21,7 +21,7 @@
      width: 100%;
      top: 60px;
      z-index: 99;
-     background:lighten($primary--bg,0.2);
+     background:$primary--bg;
      box-shadow: 0 2px 10px rgba($secondary--bg,0.2);
      display: none;
      &--item{
@@ -32,7 +32,7 @@
           border-bottom: none;
         }
         &:hover{
-          background:$primary--bg;
+          background:lighten($primary--bg,100%);
         }
      }
    }

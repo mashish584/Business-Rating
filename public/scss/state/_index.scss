@@ -45,3 +45,10 @@
 		background: $apple;
 	}
 }
+
+//search 
+.search_result{
+	.active{
+      background:lighten($primary--bg,100%);
+   	}
+}
