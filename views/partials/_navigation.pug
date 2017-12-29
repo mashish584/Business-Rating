@@ -1,0 +1,11 @@
+mixin navigation(home=true,signin,signup)
+  nav.navbar
+          .navbar-btn
+            button.fa.fa-bars(data-id='open')
+            button.fa.fa-times.hide(data-id='close')
+          a.navbar-logo(href='/') Business Rating 
+          ul.navbar_items
+            if home
+              +homeNav()
+            else
+              +normalNav(signin,signup)

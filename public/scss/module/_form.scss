@@ -1,0 +1,48 @@
+
+form{
+    @include flexy(column){
+        width: 400px;
+        align-self: center;
+        margin-top:em(70px);
+        padding:em(40px) em(20px);
+        background: lighten($primary--bg,10%);
+    }
+
+    span{
+        font-size: em(12px);
+        line-height: em(22px,12px);
+        font-weight: $font-weight--bold;
+        letter-spacing: $spacing;
+        text-transform: uppercase;
+        color: $secondary--bg;
+        a{
+            text-transform: lowercase;
+            color: lighten($primary--bg,10%);
+            padding: em(5px) em(10px);
+            border-radius: em(5px);
+            &.fa-facebook{
+                background: darken($CornflowerBlue,30%);
+            }  
+            &.fa-google{
+                background: $pomegranate;
+            }
+        }
+    }
+
+    .form-group{
+        @include flexy(){
+            justify-content: space-between;
+            margin: em(10px) 0;
+        }
+        a{
+            align-self: center;
+        }
+    }
+
+    p{
+        color: darken($primary--bg,45%);
+        text-align: right;
+        margin:em(13px) 0;
+    }
+
+}

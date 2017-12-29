@@ -1,0 +1,127 @@
+extend layout
+
+block content
+    //- Check if user given a review or not
+    -var given = false
+    -var rating = 0;
+        each review in company.reviews
+          if JSON.stringify(review.reviewer._id) == JSON.stringify(user._id)
+            -rating = review.rating
+            -given = !given
+    #content-wrapper
+      +navigation()
+      .company_profile
+        .company_profile--header
+          img.item(src=`${company.photo}`, alt='')
+          .company-info.item
+            h2= company.name
+            if user && JSON.stringify(company.owner) == JSON.stringify(user._id)
+                a(href=`/company/${company._id}/edit` class="normal-btn edit-btn") Edit Details
+            hr
+            .stars
+              if !given
+                a.anchor-button(href=(user != null?'#review':'/'))=(user != null?'Write a review':'Login for review')
+              -var i=0;
+              -var full = parseInt(company.average/1);
+              -var half = company.average%1?true:false
+              -var off = 5-full;
+              if half
+                -off--
+              .stars
+                while i < full
+                  i.star-on
+                  -i++
+                if half
+                  i.star-half
+                -i=0;
+                while i < off
+                  i.star-off
+                  -i++
+                span #{company.average.toFixed(1)} rating out of 5
+            .about= company.about
+            .social-media-links
+              if company.social.facebook
+                a.fa.fa-facebook(href='')
+              if company.social.google
+                a.fa.fa-google(href='')
+              if company.social.website
+               a.fa.fa-globe(href='')
+            if user
+              -var isWorking = false;
+              each employee in company.employees
+                if JSON.stringify(employee) == JSON.stringify(user._id)
+                  -isWorking = true;
+              form(action=`/company/${company._id}/employee/add` method="POST" style="padding: 0;margin-top: 10px;margin-left: auto;")
+                if !isWorking
+                  button.normal-btn(type="submit") Register me as a Employee
+                else
+                  button.normal-btn(type="submit" style="background:red;") Remove me as a Employee
+        .company_profile--basic
+          span
+            i.fa.fa-map-marker
+            | #{company.city}, #{company.state}
+          span
+            i.fa.fa-phone
+            | +91-#{company.contact}
+          .stars
+            span Your Rating :
+            -var i = 0;
+            -var off = 5-rating;
+            while i < rating
+              i.star-on
+              -i++
+            -i=0;
+            while i < off
+              i.star-off
+              -i++
+        h2.headline Employees
+        .company_profile--employees
+          if company.employees.length != 0
+            a(href='')
+              img(src='https://unsplash.it/500/500', alt='')
+              .about
+                span Ashish Mehra
+          else
+            p(style="margin:auto") Employees not available.
+        h2.headline Reviews
+        if user && !given
+          .company_profile--form#review
+            form(action=`/company/${company._id}/review` method="POST")
+              if success.length > 0
+                div.flash-success #{success}
+              if error.length > 0
+                div.flash-error   #{error}
+              textarea(name="review" placeholder="Tell us about your experience with us")
+              div.stars-form.stars
+                b Your Rating :
+                label.star-off#form-rating(data-rating="1")
+                label.star-off#form-rating(data-rating="2")
+                label.star-off#form-rating(data-rating="3")
+                label.star-off#form-rating(data-rating="4")
+                label.star-off#form-rating(data-rating="5")
+                input(type="checkbox" name="rating" id="star_rate" value="0" checked)
+              button.form-submit Submit
+        .company_profile--reviews
+          if company.reviews.length != 0
+            each review in company.reviews
+              li
+                img(src=`${review.reviewer.gravtar}`, alt='')
+                .review
+                  a(href='')
+                    h3= review.reviewer.username
+                  .stars
+                    -var i = 0;
+                    -var off = 5-review.rating;
+                      while i < review.rating
+                        i.star-on
+                        -i++
+                      -i=0;
+                      while i < off
+                        i.star-off
+                        -i++
+                  p
+                    | #{review.review}
+          else
+            p(style="text-align:center") Reviews not available.
+block footer
+    footer(style='background:#fff;') © Business Rating App

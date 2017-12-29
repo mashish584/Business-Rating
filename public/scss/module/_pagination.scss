@@ -1,0 +1,26 @@
+.pagination{
+    @include flexy();
+    margin: em(20px) 1%;
+    justify-content: center;
+    a{
+        margin:em(5px) em(10px);
+        background:lighten($primary--bg,10%);
+        padding:em(5px) em(12px);
+        box-shadow: 0 1px 3px rgba($secondary--bg,0.2);
+        color: $secondary--bg;
+        &:first-child{
+           margin-right: auto;
+        }
+        &:last-child{
+            margin-left: auto;
+        }
+    }
+    .pages{
+        display: inherit;
+        margin:auto;
+        .active{
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            transform: scale(1.1)
+        }
+    }
+}

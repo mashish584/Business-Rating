@@ -1,0 +1,74 @@
+
+// Declaring variables -- Fonts
+//================================
+
+$font-url--google : 'https://fonts.googleapis.com/css?family=Catamaran:200,500,700,800,900|Kavoon|Lato:100,300,400,400i,700,900,900i|Raleway:200,600,600i,700i,800,800i,900i|Titillium+Web:600,600i,700i';
+$font-url--icon   : 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css';
+
+$font-family--one: 'Kavoon', cursive;
+$font-family--two: 'Raleway', sans-serif;
+$font-family--three: 'Catamaran', sans-serif;
+$font-family--four: 'Titillium Web', sans-serif;
+$font-family--five: 'Lato', sans-serif;
+
+$font-weight--thin      : 100;
+$font-weight--light     : 300;
+$font-weight--medium    : 500;
+$font-weight--bold      : 700;
+$font-weight--ultraBold : 900;
+
+$font-size : 16px;
+$font-base : 24px;
+$spacing   : 1px;
+
+
+// Declaring variables -- Colors  
+//================================
+
+
+$primary--bg : #f5f5f5;
+$secondary--bg : #222;
+
+$CornflowerBlue: #6A82FB;
+$perfume : #CF8BF3;
+$pomegranate : #fc4a1a;
+$apple : #45B649;
+
+// Declaring variables -- Colors  
+//================================
+
+$container--width: 100%;
+
+// Declaring variables -- Image Path 
+//===================================
+
+$path--img : '../img';
+
+
+// Declaring variables -- Image Path 
+//===================================
+
+$input--padding : 10px;
+$input--color :  darken($primary--bg,3%);
+$input--submit : darken($CornflowerBlue,10%);
+$input--Xmargin: 0px;
+$input--Ymargin: 5px;
+
+// FlexBox
+//============================
+
+$flex-item--marginX: 1%;
+
+// Viewport sizes
+//=============================
+$viewport--lg : 992px;
+$viewport--md : 786px;
+$viewport--sm : 586px;
+$viewport--xs : 468px;
+
+// Viewport Path
+//============================
+
+// $path--viewports : 'base/viewports' 
+
+

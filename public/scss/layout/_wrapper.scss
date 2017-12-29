@@ -1,0 +1,22 @@
+
+// Form Wrapper
+
+#form-wrapper{
+    @extend %container;
+    background: url(#{$path--img}/background.jpg) no-repeat center;
+    background-size: cover;
+    padding-bottom: em(200px);
+}
+
+// Content Wrapper
+#content-wrapper{
+    @extend %container;
+    height: 100%;
+    background:$primary--bg;
+}
+
+// Comapnies Wrapper
+
+.companies{
+    margin:em(30px) em(15px);
+}

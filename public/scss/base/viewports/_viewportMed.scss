@@ -1,0 +1,89 @@
+@include media($viewport--md,max-width){
+    // userProfile
+    .user_profile{
+
+      &--header{
+          img{
+              margin-left: auto;
+              margin-right: auto;
+              margin-bottom: em(-100px);
+          }
+      }
+
+      &--section{
+          padding: 0 em(10px);
+          flex-direction: column;
+         .about{
+           text-align: center;
+           margin-top:em(150px);  
+           padding: em(10px);       
+         }
+         .settings{
+             width: 98%;
+             margin: em(50px) auto;
+             padding: 0;
+             form{
+                 width: 100%;
+                 margin: 0;   
+             }
+             &:after{
+                 display: none;
+             }
+         }
+      }
+  }
+}
+
+@include media($viewport--md,max-width,$viewport--sm+1px){
+  //card module
+   .business-cards{
+        .card{
+          flex-basis: flex-width(3,$flex-item--marginX);
+          height: em(350px);
+          &-image{
+              height: 50%;
+          }
+        }
+   }
+
+  //search module
+  .search{
+      flex-basis: 250px;
+  }
+
+  //comany profile
+    .company_profile{
+
+        &--header{
+            flex-direction: column;
+            img{
+               @include imageSize(100%,400px);
+            }
+            .item{
+                &:last-child{
+                  padding: 0;
+                }
+            }
+        }
+
+        .company-info{
+             margin-top:em(50px);
+            .stars{
+                i{
+                   width: 20px;
+                   height: 20px;
+                }
+                span{
+                   margin-left: 15px;
+                }
+            }
+        }
+
+        &--employees{
+            a{
+              flex-basis:flex-width(2,$flex-item--marginX);
+            }            
+        }
+    }
+
+}

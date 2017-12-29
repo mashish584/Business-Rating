@@ -1,0 +1,55 @@
+&--reviews{
+    li{
+        @include flexy();
+        margin-bottom: em(30px);
+        width:80%;
+        @extend %center;
+        padding:em(15px);
+        border:1px solid darken($primary--bg,10%);
+        img{
+            @include imageSize(150px,150px);
+            margin-right: em(30px);
+            align-self: center;
+        }
+        .review{
+            flex:2;
+            .rating{
+                @include flexy();
+            }
+            a{
+                display: block;
+                h3{
+                    font-size: em(18px);
+                    margin-bottom: em(18px,30px);
+                }
+            }
+        }
+    }
+}
+
+&--form{
+    form{
+        width:80%;
+        padding-top: 0;
+        @extend %center;
+        textarea{
+            margin-top: em(25px);
+            height: 120px;
+            max-height: 120px;
+            background:lighten($primary--bg,10%);
+            border:2px solid darken($primary--bg,20%);
+        }
+        .stars-form{
+            margin-top:em(12px);
+            margin-bottom:em(12px);
+            b{
+                margin-right: em(10px); 
+                margin-left: em(10px);
+                margin-top:em(-2px);
+            }
+            label{
+                margin:0 em(3px);
+            }
+        }
+    }
+}

@@ -1,0 +1,22 @@
+.stars{
+    @include flexy();
+    @extend %above;
+    i,
+    label{
+        width: 12px;
+        height: 12px;
+        margin: em(10px) em(3px);       
+    }
+    label{
+        width: 20px;
+        height: 20px;
+    }
+    span{
+        align-self: center;
+        margin-left: auto;
+        font-weight: $font-weight--thin;
+    }
+    input[type="checkbox"]{
+        display: none;
+    }
+}

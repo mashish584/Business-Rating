@@ -1,0 +1,11 @@
+mixin normalNav(signin = true,signup = false)
+    if signin
+        li.navbar_item
+            | Don't have an Account, 
+            a.navbar_item--link(href='/register')  Sign Up 
+            | now
+    if signup
+        li.navbar_item
+            | Already have an Account, 
+            a.navbar_item--link(href='/')  Sign In 
+            | now

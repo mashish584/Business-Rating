@@ -1,0 +1,21 @@
+
+
+//Import google fonts if link available
+@if variable-exists(font-url--google){
+    @import url($font-url--google);
+}
+
+@if variable-exists(font-url--icon){
+    @import url($font-url--icon);
+}
+
+
+// Converting px to em
+
+@function em($target,$context:$font-size){
+    @return ($target/$context) * 1em;
+}
+
+@function flex-width($items,$margin){
+    @return (100/$items) - $margin*2; 
+}

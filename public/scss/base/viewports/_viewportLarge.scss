@@ -1,0 +1,46 @@
+@include media($viewport--lg,max-width){
+    //card module
+    .business-cards{
+        .card{
+            flex-basis: flex-width(3,$flex-item--marginX);
+        }
+    }
+    
+    //comany profile
+    .company_profile{
+        &--header{
+            &:after{
+                right:-50%;
+            }
+        }
+        .company-info{
+            .about,
+            .stars,
+            .social-media-links{
+                padding: 0;
+            }
+            .stars{
+                i{
+                    width: 15px;
+                    height: 15px;
+                    margin:em(2.5px);
+                }
+                span{
+                    font-size: em(12px);
+                }
+            }
+            h2{
+                font-size: em(25px);
+            }
+            .about{
+              font-size: em(14px);
+              line-height: em(24px);
+            }
+            .social-media-links{
+                margin-top: em(30px);
+            }
+        }
+    }
+
+
+}

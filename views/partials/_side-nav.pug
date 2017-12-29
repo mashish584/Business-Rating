@@ -1,0 +1,16 @@
+mixin sideMenu()
+    .side-menu
+      li
+        a(href='/home') Home
+      if !user
+        li
+          a(href='/') Sign In
+        li
+          a(href='/register') Sign Up
+      if user
+        li
+          a(href=`/profile/${user._id}`) Profile
+        li
+          a(href='/company/add') Add Company
+        li
+          a(href='/logout') Sign Out

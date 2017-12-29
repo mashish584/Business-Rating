@@ -1,0 +1,15 @@
+extend layout
+
+block content
+    #form-wrapper
+      +navigation(false,false)
+      form( method="POST")
+        h2 Reset Password
+        hr
+        if error.length > 0
+          div.flash-error   #{error}
+        input#password.form-input(type='password' name='password', placeholder='New Password')
+        input#password.form-input(type='password' name='confirm', placeholder='Confirm password')
+        .form-group
+        button.form-submit(type='submit') Reset
+

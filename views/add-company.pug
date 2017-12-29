@@ -1,0 +1,59 @@
+extend layout
+
+block content
+    #content-wrapper
+      +navigation()
+      form(action=(isCompany)?`/company/${company._id}/edit`:'' method="POST" enctype=(isCompany)?'application/x-www-form-urlencoded':'multipart/form-data' id=(isCompany)?'edit-company':'add-company')
+        h2= (isCompany)?'Edit your company':'Add your company'
+        hr
+        if success.length > 0
+          div.flash-success #{success}
+        if error.length > 0
+          div.flash-error   #{error}
+        div#flashes
+        .form-group
+          label(for='name') Company Name
+          input#name(type='text' name='name' value=company.name)
+        .form-group
+          label(for='state') State
+          select(name='state', id='state')
+            option(selected disabled) Select State
+              each state in states
+                if state == company.state
+                  option(value=state selected)= state
+                else
+                  option(value=state)= state
+        .form-group
+          label(for='city') City
+          select(name='city', id='cities')
+            if company.city
+              option(selected)= company.city
+            else
+              option(selected disabled) Select city
+        .form-group
+          label(for='contact') Contact
+          input#contact(type='text', name='contact' placeholder='+91 (10 digits contact number)' value=company.contact)
+        .form-group
+          label(for='about') About
+          textarea(name='about', maxlength='175', placeholder='Short Description about your company')= company.about
+        .form-group
+          .input-group
+            span Facebook
+            input(type='text', name='social[facebook]', placeholder='Page Name' value=(company.social && company.social.facebook))
+          .input-group
+            span Google
+            input(type='text', name='social[google]' placeholder='Page Name' value=(company.social && company.social.google))
+          .input-group
+            label(for='website') Website
+            input(type='text', name='social[website]' style="padding-left:10px;" placeholder="https://www.example.com" value=(company.social && company.social.website))
+        hr
+        if !isCompany
+          .upload-group
+            label.normal-btn(for='photo')
+              i.fa.fa-camera
+            input.form-submit(type='file' name='photo' id='photo')
+            //- .progress-bar 0% upload
+            span.help-text(style="padding:15px;") *Upload image for your thumbnail
+        button.form-submit.add-btn(type='submit')= (isCompany)?'Update':'Add'
+block footer
+    footer.bg-change © Business Rating App

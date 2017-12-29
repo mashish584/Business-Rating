@@ -1,0 +1,54 @@
+
+
+// hide element
+.hide{
+    display: none;
+}
+
+.show{
+	display: block;
+}
+
+//hidden overflow from window elements
+.overflow{
+    overflow:hidden;
+}
+
+//side navigation
+.open-nav{
+	transform:translateX(50%);
+}
+
+// show side navigation
+.visible{
+	opacity:1;
+}
+
+//dropdown navigation
+.show-dropdown{
+	opacity:1;
+	transform:translateX(-60%) translateY(0);
+}
+
+//errors
+.flash{
+	&-error,
+	&-success{
+		padding: 15px;
+		color: #fff;
+		margin-bottom: 10px;
+	}
+	&-error{
+		background: $pomegranate;
+	}
+	&-success{
+		background: $apple;
+	}
+}
+
+//search 
+.search_result{
+	.active{
+      background:lighten($primary--bg,100%);
+   	}
+}

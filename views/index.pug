@@ -1,0 +1,57 @@
+extend layout
+
+block content
+    #content-wrapper
+      +navigation()
+      .companies
+        .section-heading
+          h2 Companies
+          .search
+            input#search-input(type='text' name='search' data-target='comapanies' placeholder='Search')
+            button.fa.fa-search
+            .search_result
+        .business-cards
+          if companies.length > 0
+            each company in companies
+              .card
+                .card-image
+                  img(src=`${company.photo}`, alt='')
+                .card-content
+                  h2= company.name
+                  -var i=0;
+                  -var full = parseInt(company.average/1);
+                  -var half = company.average%1?true:false
+                  -var off = 5-full;
+                  if half
+                    -off--
+                  .stars
+                    while i < full
+                      i.star-on
+                      -i++
+                    if half
+                      i.star-half
+                    -i=0;
+                    while i < off
+                      i.star-off
+                      -i++
+                    span #{company.average.toFixed(1)} rating
+                  hr
+                  span
+                    i.fa.fa-map-marker
+                    | #{company.city},#{company.state}
+                .card-action
+                  a(href=`/company/${company._id}`)
+                    | See More
+                    i.fa.fa-share
+          else
+            h2(style="margin:50px auto;text-align:center;") No companies found
+        hr
+        .pagination
+          div.pages
+            -var i=1;
+            while i <= pages
+              -var active = (i==page)?'active':'';
+              a(href=`/home?page=${i}` class=active)= i
+              -i++;
+
+

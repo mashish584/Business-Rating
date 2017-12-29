@@ -1,0 +1,55 @@
+extend layout
+
+block content
+  #content-wrapper
+    +navigation()
+    .user_profile
+      .user_profile--header
+        img(src=`${profile.gravatar}` alt='')
+      .user_profile--section
+        .about
+          h2(style="margin-bottom:18px;color:#222;")= profile.username
+          h4
+            | Works in 
+            a(href='') Alerto
+          hr
+          | #{profile.about}
+        if user
+          .settings
+            ul.menu
+              li.active
+                a(href='' class="settings--switch" data-target="bio") Bio Update
+              li
+                a(href='' class="settings--switch" data-target="password") Password Update
+            form(action=`/profile/${user._id}/update/bio` id='form-one' method="POST")
+              h2 Bio Update
+              hr
+              if success.length > 0
+                div.flash-success #{success}
+              if error.length > 0
+                div.flash-error   #{error}
+              .form-group
+                label(for='Introduction') Introduction
+                textarea(name='about')=profile.about
+              button.form-submit(type='submit') Save
+            form(action=`/profile/${user._id}/update/password` method="POST" id='form-two')
+              h2 Password Update
+              hr
+              div#flashes
+              .form-group
+                label(for='old') Old Password
+                input#old(type='password', name='oldPassword')
+                p(style="text-align:left;") Leave this empty if you created your account with social logins.
+              .form-group
+                label(for='new') New Password
+                input#new(type='password', name='newPassword')
+              .form-group
+                label(for='confirm') Confirm Password
+                input#confirm(type='password', name='confirmPassword')
+              input(type="hidden" name="id" value=user._id)
+              button.form-submit(type='submit') Update
+
+block footer
+  footer(style='background:#fff;padding-top:40px;') © Business Rating App
+
+

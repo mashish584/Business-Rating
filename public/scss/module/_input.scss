@@ -1,0 +1,10 @@
+
+#form-wrapper{
+    input{
+        box-shadow: 0 2px 5px rgba($secondary--bg,0.2);
+        margin:em(10px) auto;
+    }
+    [type="checkbox"]{
+        margin:0 em(5px);
+    }
+}
