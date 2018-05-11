@@ -5,7 +5,7 @@ block content
     -var given = false
     -var rating = 0;
         each review in company.reviews
-          if JSON.stringify(review.reviewer._id) == JSON.stringify(user._id)
+          if user && JSON.stringify(review.reviewer._id) == JSON.stringify(user._id)
             -rating = review.rating
             -given = !given
     #content-wrapper
